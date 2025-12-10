@@ -1,15 +1,40 @@
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Manager untuk mengelola inventaris gudang
- * Implementasi 4 ALGORITMA UTAMA:
- * 1. TREE TRAVERSAL (Recursive DFS) - untuk kategori barang
- * 2. LINEAR SEARCH (Partial Match) - untuk pencarian nama
- * 3. SORTING (Comparator) - untuk sort nama, stok, harga
- * 4. PRIORITY QUEUE (Auto-Sort) - untuk barang expired
+ * 
+ * ===================================================================
+ * Implementasi 4 ALGORITMA UTAMA dengan KOMPLEKSITAS SEBENARNYA:
+ * ===================================================================
+ * 
+ * 1. TREE TRAVERSAL (Recursive DFS - Depth First Search)
+ *    - Menggunakan rekursi untuk traverse binary tree kategori
+ *    - Pre-order traversal: Root -> Left -> Right
+ *    - Kompleksitas: O(h) dimana h = tinggi tree, worst case O(n)
+ *    - Implementasi: addItemToCategoryTreeRecursive(), getAllItemsRecursive()
+ * 
+ * 2. LINEAR SEARCH (Sequential Search dengan Partial Match)
+ *    - Iterasi manual satu per satu menggunakan loop
+ *    - Kompleksitas: O(n) - harus cek semua elemen
+ *    - TIDAK menggunakan Stream API atau filter bawaan
+ *    - Implementasi: searchItemByName()
+ * 
+ * 3. SORTING (Bubble Sort Manual)
+ *    - Implementasi manual nested loop untuk compare dan swap
+ *    - Kompleksitas: O(n²) - worst case quadratic time
+ *    - TIDAK menggunakan Collections.sort() atau Comparator
+ *    - Implementasi: bubbleSortByName(), bubbleSortByStock(), 
+ *                    bubbleSortByPrice(), bubbleSortById()
+ * 
+ * 4. PRIORITY QUEUE (Min-Heap untuk Expired Items)
+ *    - Binary heap structure untuk maintain sorted order
+ *    - Kompleksitas: O(log n) untuk insert (heapify up)
+ *    - Auto-sort berdasarkan expiration date (earliest first)
+ *    - Implementasi: checkAndMoveExpiredItems() + PriorityQueue
+ * 
+ * ===================================================================
  */
 
 public class WarehouseManager {
@@ -77,10 +102,13 @@ public class WarehouseManager {
         }
 
         if (item.isExpired(LocalDate.now())) {
-            expiredQueue.offer(item);  // Priority Queue auto-sort
-            System.out.println("[System] BARANG EXPIRED: " + item.getItemName() + " (Langsung masuk ke Expired Storage)");
+            // PRIORITY QUEUE: Insert ke heap (O(log n) - heapify up operation)
+            expiredQueue.offer(item);  
+            System.out.println("[Priority Queue - Heap Insert] BARANG EXPIRED: " + item.getItemName() + 
+                             " (Langsung masuk ke Expired Storage | Heap size: " + expiredQueue.size() + ")");
         } else {
             // ALGORITMA: RECURSIVE TREE TRAVERSAL (DFS)
+            System.out.println("[Tree Traversal DFS] Memulai pencarian kategori untuk: " + item.getItemName());
             if (!addItemToCategoryTreeRecursive(root, item)) {
                 System.err.println("Kategori barang tidak ditemukan: " + item.getItemCategory());
                 return false;
@@ -93,39 +121,49 @@ public class WarehouseManager {
 
     /**
      * ALGORITMA: RECURSIVE TREE TRAVERSAL (DFS - Depth-First Search)
+     * Kompleksitas: O(h) dimana h adalah tinggi tree (worst case O(n) untuk skewed tree)
+     * Menggunakan pre-order traversal: Root -> Left -> Right
      */
     private boolean addItemToCategoryTreeRecursive(CategoryNode node, InventoryItem item) {
         if (node == null) {
+            System.out.println("  [DFS] Null node - backtrack");
             return false;
         }
+
+        System.out.println("  [DFS] Mengunjungi node: " + node.getCategoryName());
 
         // Base case: found matching category
         if (node.getCategoryName().equalsIgnoreCase(item.getItemCategory())) {
             node.getStorageItems().add(item);
-            System.out.println("[Tree Traversal DFS] Item ditambahkan ke node: " + node.getCategoryName());
+            System.out.println("  [DFS] ✓ Match! Item '" + item.getItemName() + "' ditambahkan ke node: " + node.getCategoryName());
             return true;
         }
 
         // Recursive case: traverse left subtree first (DFS pre-order)
+        System.out.println("  [DFS] Mencari di left subtree dari: " + node.getCategoryName());
         if (addItemToCategoryTreeRecursive(node.getLeftChild(), item)) {
             return true;
         }
 
         // Then traverse right subtree
+        System.out.println("  [DFS] Mencari di right subtree dari: " + node.getCategoryName());
         return addItemToCategoryTreeRecursive(node.getRightChild(), item);
     }
 
     /**
      * ALGORITMA: RECURSIVE TREE TRAVERSAL untuk mengambil semua items
      * DFS (Depth-First Search) post-order traversal
+     * Kompleksitas: O(n) dimana n adalah jumlah node dalam tree
      */
     private void getAllItemsRecursive(CategoryNode node, List<InventoryItem> result) {
         if (node == null) {
             return;
         }
         
-        // Collect items from current node
-        result.addAll(node.getStorageItems());
+        // Collect items from current node (process root)
+        if (!node.getStorageItems().isEmpty()) {
+            result.addAll(node.getStorageItems());
+        }
         
         // Traverse left subtree
         getAllItemsRecursive(node.getLeftChild(), result);
@@ -177,104 +215,236 @@ public class WarehouseManager {
     }
 
     /**
-     * ALGORITMA: PRIORITY QUEUE untuk auto-sort expired items
+     * ALGORITMA: PRIORITY QUEUE (Min-Heap) untuk auto-sort expired items
+     * Kompleksitas: O(log n) untuk setiap insert (offer operation)
+     * Priority Queue menggunakan binary heap structure untuk maintain order
+     * Item dengan expiration date paling awal akan berada di root (poll operation O(log n))
      */
     public int checkAndMoveExpiredItems() {
         LocalDate today = LocalDate.now();
         List<InventoryItem> itemsToCheck = getAllNonExpiredItems();
         int movedCount = 0;
 
+        System.out.println("[Priority Queue] Mengecek item expired...");
+        
         for (InventoryItem item : itemsToCheck) {
             // Cek apakah item sudah expired (hari ini atau sebelumnya)
             if (item.isExpired(today)) {
                 // Hapus dari Tree menggunakan recursive traversal
                 deleteFromTreeRecursive(root, item.getItemId());
-                // Tambahkan ke Priority Queue (auto-sort by expiration date)
+                
+                // PRIORITY QUEUE: Tambahkan ke heap (O(log n) - heapify up)
                 expiredQueue.offer(item);
+                System.out.println("  [Heap Insert] Item expired dipindahkan: " + item.getItemName() + 
+                                 " | Exp: " + item.getExpirationDate() + " | Heap size: " + expiredQueue.size());
                 movedCount++;
             }
         }
+        
         if (movedCount > 0) {
+            System.out.println("[Priority Queue] Total item dipindahkan: " + movedCount);
+            System.out.println("[Priority Queue] Item dengan expiration paling awal: " + 
+                             (expiredQueue.peek() != null ? expiredQueue.peek().getItemName() : "N/A"));
             saveDataToFile();
         }
         return movedCount;
     }
 
     // Near Expiry Notification (14 hari)
+    // Menggunakan manual filtering dengan loop O(n)
     public List<InventoryItem> getNearExpiryItems() {
         int checkDays = 14;
         LocalDate limitDate = LocalDate.now().plusDays(checkDays);
         LocalDate today = LocalDate.now();
 
-        List<InventoryItem> upcoming = getAllNonExpiredItems().stream()
-                .filter(i -> i.getExpirationDate() != null)
-                .filter(i -> i.getExpirationDate().isAfter(today))
-                .filter(i -> i.getExpirationDate().isBefore(limitDate) || i.getExpirationDate().isEqual(limitDate))
-                .collect(Collectors.toList());
+        List<InventoryItem> allItems = getAllNonExpiredItems();
+        List<InventoryItem> upcoming = new ArrayList<>();
+        
+        // Manual filtering O(n)
+        for (InventoryItem item : allItems) {
+            if (item.getExpirationDate() != null) {
+                if (item.getExpirationDate().isAfter(today) && 
+                   (item.getExpirationDate().isBefore(limitDate) || item.getExpirationDate().isEqual(limitDate))) {
+                    upcoming.add(item);
+                }
+            }
+        }
 
-        upcoming.sort(InventoryItem.NAME_COMPARATOR);
+        // Sort menggunakan Bubble Sort
+        bubbleSortByName(upcoming);
         return upcoming;
     }
 
 
     /**
      * ALGORITMA: LINEAR SEARCH dengan partial match
+     * Kompleksitas: O(n) - dimana n adalah jumlah total item
+     * Menggunakan iterasi manual untuk mencari item satu per satu
      */
     public List<InventoryItem> searchItemByName(String keyword) {
         String searchKey = keyword.toLowerCase();
         System.out.println("[Linear Search] Mencari barang dengan keyword: \"" + keyword + "\"");
+        System.out.println("[Linear Search] Kompleksitas: O(n) - Iterasi manual melalui semua item");
         
-        // Linear search through all items in HashMap
-        return quickAccessMap.values().stream()
-                .filter(item -> item.getItemName().toLowerCase().contains(searchKey))  // Partial match
-                .collect(Collectors.toList());
+        List<InventoryItem> result = new ArrayList<>();
+        int comparisonCount = 0;
+        
+        // MANUAL LINEAR SEARCH: Iterasi satu per satu (O(n))
+        for (InventoryItem item : quickAccessMap.values()) {
+            comparisonCount++;
+            // Partial match: cek apakah nama item mengandung keyword
+            if (item.getItemName().toLowerCase().contains(searchKey)) {
+                result.add(item);
+                System.out.println("  -> Match ditemukan: " + item.getItemName() + " (Perbandingan ke-" + comparisonCount + ")");
+            }
+        }
+        
+        System.out.println("[Linear Search] Total perbandingan: " + comparisonCount + " item");
+        System.out.println("[Linear Search] Hasil ditemukan: " + result.size() + " item");
+        return result;
     }
 
     /**
-     * ALGORITMA: SORTING dengan Comparator
+     * ALGORITMA: SORTING dengan implementasi manual Bubble Sort
+     * Kompleksitas: O(n²) - nested loop untuk membandingkan dan menukar elemen
      */
     public List<InventoryItem> filterAndSort(String category, String fragileStatus, String sortOrder) {
         List<InventoryItem> filtered = getAllNonExpiredItems();
 
-        // 1. Filter berdasarkan category
+        // 1. Filter berdasarkan category (Manual loop - O(n))
         if (!category.equalsIgnoreCase("ALL")) {
-            filtered = filtered.stream()
-                    .filter(item -> item.getItemCategory().equalsIgnoreCase(category))
-                    .collect(Collectors.toList());
+            List<InventoryItem> temp = new ArrayList<>();
+            for (InventoryItem item : filtered) {
+                if (item.getItemCategory().equalsIgnoreCase(category)) {
+                    temp.add(item);
+                }
+            }
+            filtered = temp;
         }
 
-        // 2. Filter berdasarkan fragile status
+        // 2. Filter berdasarkan fragile status (Manual loop - O(n))
         if (!fragileStatus.equalsIgnoreCase("ANY")) {
             boolean isFragileFilter = fragileStatus.equalsIgnoreCase("YES");
-            filtered = filtered.stream()
-                    .filter(item -> item.isFragile() == isFragileFilter)
-                    .collect(Collectors.toList());
+            List<InventoryItem> temp = new ArrayList<>();
+            for (InventoryItem item : filtered) {
+                if (item.isFragile() == isFragileFilter) {
+                    temp.add(item);
+                }
+            }
+            filtered = temp;
         }
 
-        // 3. ALGORITMA SORTING: Pilih comparator berdasarkan sortOrder
-        Comparator<InventoryItem> comparator;
+        // 3. ALGORITMA SORTING: Bubble Sort Manual (O(n²))
+        System.out.println("[Sorting] Menggunakan Bubble Sort - Kompleksitas O(n²)");
+        
         switch (sortOrder.toUpperCase()) {
             case "NAME":
-                comparator = InventoryItem.NAME_COMPARATOR;
                 System.out.println("[Sorting] Diurutkan berdasarkan NAMA (A-Z)");
+                bubbleSortByName(filtered);
                 break;
             case "STOCK":
-                comparator = InventoryItem.STOCK_COMPARATOR;
                 System.out.println("[Sorting] Diurutkan berdasarkan STOK (Descending)");
+                bubbleSortByStock(filtered);
                 break;
             case "PRICE":
-                comparator = InventoryItem.PRICE_COMPARATOR;
                 System.out.println("[Sorting] Diurutkan berdasarkan HARGA (Descending)");
+                bubbleSortByPrice(filtered);
                 break;
             default: // ID (default)
-                comparator = Comparator.comparing(InventoryItem::getItemId);
                 System.out.println("[Sorting] Diurutkan berdasarkan ID");
+                bubbleSortById(filtered);
                 break;
         }
 
-        // Apply sorting menggunakan Timsort (O(n log n))
-        filtered.sort(comparator);
         return filtered;
+    }
+
+    /**
+     * BUBBLE SORT BY NAME - Ascending (A-Z)
+     * Kompleksitas: O(n²) dengan nested loop
+     */
+    private void bubbleSortByName(List<InventoryItem> items) {
+        int n = items.size();
+        int swapCount = 0;
+        
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Bandingkan nama item[j] dengan item[j+1]
+                if (items.get(j).getItemName().compareToIgnoreCase(items.get(j + 1).getItemName()) > 0) {
+                    // Swap jika order salah
+                    InventoryItem temp = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, temp);
+                    swapCount++;
+                }
+            }
+        }
+        System.out.println("[Bubble Sort] Total swap: " + swapCount + " operasi");
+    }
+
+    /**
+     * BUBBLE SORT BY STOCK - Descending (Tertinggi ke Terendah)
+     * Kompleksitas: O(n²) dengan nested loop
+     */
+    private void bubbleSortByStock(List<InventoryItem> items) {
+        int n = items.size();
+        int swapCount = 0;
+        
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Descending: item dengan stok lebih tinggi di depan
+                if (items.get(j).getStockOnHand() < items.get(j + 1).getStockOnHand()) {
+                    InventoryItem temp = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, temp);
+                    swapCount++;
+                }
+            }
+        }
+        System.out.println("[Bubble Sort] Total swap: " + swapCount + " operasi");
+    }
+
+    /**
+     * BUBBLE SORT BY PRICE - Descending (Tertinggi ke Terendah)
+     * Kompleksitas: O(n²) dengan nested loop
+     */
+    private void bubbleSortByPrice(List<InventoryItem> items) {
+        int n = items.size();
+        int swapCount = 0;
+        
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Descending: item dengan harga lebih tinggi di depan
+                if (items.get(j).getPrice() < items.get(j + 1).getPrice()) {
+                    InventoryItem temp = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, temp);
+                    swapCount++;
+                }
+            }
+        }
+        System.out.println("[Bubble Sort] Total swap: " + swapCount + " operasi");
+    }
+
+    /**
+     * BUBBLE SORT BY ID - Ascending
+     * Kompleksitas: O(n²) dengan nested loop
+     */
+    private void bubbleSortById(List<InventoryItem> items) {
+        int n = items.size();
+        int swapCount = 0;
+        
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (items.get(j).getItemId().compareToIgnoreCase(items.get(j + 1).getItemId()) > 0) {
+                    InventoryItem temp = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, temp);
+                    swapCount++;
+                }
+            }
+        }
+        System.out.println("[Bubble Sort] Total swap: " + swapCount + " operasi");
     }
 
     // ============================================
