@@ -1,0 +1,2 @@
+SB1;Susu Bubuk;Finished Goods;false;2025-12-20;M-A1;50
+BB2;Besi Baja;Material;false;-;B-01;200
