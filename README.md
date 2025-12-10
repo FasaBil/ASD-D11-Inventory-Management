@@ -14,8 +14,7 @@
 | **Mata Kuliah** | Algoritma dan Struktur Data (ASD) |
 | **Kelas** | D |
 | **Kelompok** | D-11 |
-| **Semester** | Gasal 2024/2025 |
-| **Institusi** | Institut Teknologi Sepuluh Nopember |
+| **Semester** | Gasal 2025/2026 |
 
 ---
 
