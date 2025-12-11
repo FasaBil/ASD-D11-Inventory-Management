@@ -53,12 +53,11 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 -  **Filter** - By kategori (Material/Finished Goods) & fragile status
 -  **Tree Traversal** - Navigasi kategori menggunakan Binary Tree
 
-###  **Sorting**
--  Sort by **Nama** (A-Z)
--  Sort by **Stok** (Descending)
--  Sort by **Harga** (Descending)
--  Sort by **ID**
--  Implementasi manual **Bubble Sort** (O(n²))
+### 📈 **Sorting**
+- ✅ Sort by **Nama** (A-Z)
+- ✅ Sort by **Stok** (Descending)
+- ✅ Sort by **ID**
+- ✅ Implementasi manual **Bubble Sort** (O(n²))
 
 ###  **Expired Management**
 -  **Priority Queue** - Auto-sort expired items by date
@@ -210,7 +209,6 @@ Fragile? (true/false): true
 Expiration Date (YYYY-MM-DD / Kosong): 2025-12-31
 Lokasi diatur otomatis ke: F-01
 Stok Tersedia: 100
-Harga Barang (Rp): 5000
 
 [Tree Traversal DFS] Memulai pencarian kategori untuk: Spring Water
   [DFS] Mengunjungi node: All Categories
@@ -238,7 +236,7 @@ Masukkan Nama Barang: water
 --- Filter & Sort NON-Expired Items ---
 Filter berdasarkan Kategori (Material / Finished Goods / ALL): ALL
 Filter berdasarkan Fragile (YES / NO / ANY): ANY
-Urutkan berdasarkan (ID / NAME / STOCK / PRICE): NAME
+Urutkan berdasarkan (ID / NAME / STOCK): NAME
 
 [Sorting] Menggunakan Bubble Sort - Kompleksitas O(n²)
 [Sorting] Diurutkan berdasarkan NAMA (A-Z)
@@ -261,7 +259,7 @@ Urutkan berdasarkan (ID / NAME / STOCK / PRICE): NAME
 |-----------|-------------------|-------------------|--------------|
 | **Tree Traversal (DFS)** | O(h) - O(n) worst | O(h) recursive stack | `addItemToCategoryTreeRecursive()` |
 | **Linear Search** | O(n) | O(1) | `searchItemByName()` |
-| **Bubble Sort** | O(n²) | O(1) | `bubbleSortByName/Stock/Price()` |
+| **Bubble Sort** | O(n²) | O(1) | `bubbleSortByName/Stock/Id()` |
 | **Priority Queue Insert** | O(log n) | O(n) heap storage | `expiredQueue.offer()` |
 | **HashMap Access** | O(1) average | O(n) | `quickAccessMap.get()` |
 
@@ -340,9 +338,9 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 ##  Format Data (inventory_data.txt)
 
 ```
-ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;Harga
-SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100;5000.0
-MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
+ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok
+SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100
+MT001;Steel Plate;Material;false;-;M-A1;50
 ```
 
 **Field:**
@@ -353,7 +351,6 @@ MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 - ExpDate: YYYY-MM-DD atau "-" (no expiration)
 - Lokasi: String (auto-assigned)
 - Stok: int
-- Harga: double
 
 ---
 

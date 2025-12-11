@@ -25,8 +25,7 @@ import java.util.*;
  *    - Implementasi manual nested loop untuk compare dan swap
  *    - Kompleksitas: O(n²) - worst case quadratic time
  *    - TIDAK menggunakan Collections.sort() atau Comparator
- *    - Implementasi: bubbleSortByName(), bubbleSortByStock(), 
- *                    bubbleSortByPrice(), bubbleSortById()
+ *    - Implementasi: bubbleSortByName(), bubbleSortByStock(), bubbleSortById()
  * 
  * 4. PRIORITY QUEUE (Min-Heap untuk Expired Items)
  *    - Binary heap structure untuk maintain sorted order
@@ -346,10 +345,6 @@ public class WarehouseManager {
                 System.out.println("[Sorting] Diurutkan berdasarkan STOK (Descending)");
                 bubbleSortByStock(filtered);
                 break;
-            case "PRICE":
-                System.out.println("[Sorting] Diurutkan berdasarkan HARGA (Descending)");
-                bubbleSortByPrice(filtered);
-                break;
             default: // ID (default)
                 System.out.println("[Sorting] Diurutkan berdasarkan ID");
                 bubbleSortById(filtered);
@@ -405,28 +400,6 @@ public class WarehouseManager {
     }
 
     /**
-     * BUBBLE SORT BY PRICE - Descending (Tertinggi ke Terendah)
-     * Kompleksitas: O(n²) dengan nested loop
-     */
-    private void bubbleSortByPrice(List<InventoryItem> items) {
-        int n = items.size();
-        int swapCount = 0;
-        
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                // Descending: item dengan harga lebih tinggi di depan
-                if (items.get(j).getPrice() < items.get(j + 1).getPrice()) {
-                    InventoryItem temp = items.get(j);
-                    items.set(j, items.get(j + 1));
-                    items.set(j + 1, temp);
-                    swapCount++;
-                }
-            }
-        }
-        System.out.println("[Bubble Sort] Total swap: " + swapCount + " operasi");
-    }
-
-    /**
      * BUBBLE SORT BY ID - Ascending
      * Kompleksitas: O(n²) dengan nested loop
      */
@@ -458,18 +431,18 @@ public class WarehouseManager {
             return;
         }
 
-        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+----------+");
-        System.out.printf("| %-8s | %-20s | %-15s | %-8s | %-15s | %-10s | %-5s | %-8s |\n",
-                "ID", "Nama", "Kategori", "Fragile", "Exp. Date", "Lokasi", "Stok", "Harga");
-        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+----------+");
+        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+");
+        System.out.printf("| %-8s | %-20s | %-15s | %-8s | %-15s | %-10s | %-5s |\n",
+                "ID", "Nama", "Kategori", "Fragile", "Exp. Date", "Lokasi", "Stok");
+        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+");
 
         for (InventoryItem item : items) {
             String date = item.getExpirationDate() == null ? "-" : item.getExpirationDate().toString();
-            System.out.printf("| %-8s | %-20s | %-15s | %-8s | %-15s | %-10s | %-5d | Rp%-6.0f |\n",
+            System.out.printf("| %-8s | %-20s | %-15s | %-8s | %-15s | %-10s | %-5d |\n",
                     item.getItemId(), item.getItemName(), item.getItemCategory(),
                     item.isFragile() ? "Yes" : "No", date, item.getLocation(), 
-                    item.getStockOnHand(), item.getPrice());
+                    item.getStockOnHand());
         }
-        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+----------+");
+        System.out.println("+----------+----------------------+-----------------+----------+-----------------+------------+-------+");
     }
 }

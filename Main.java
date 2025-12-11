@@ -114,7 +114,7 @@ public class Main {
         System.out.print("Filter berdasarkan Fragile (YES / NO / ANY): ");
         String fragileStatus = scanner.nextLine();
 
-        System.out.print("Urutkan berdasarkan (ID / NAME / STOCK / PRICE): ");
+        System.out.print("Urutkan berdasarkan (ID / NAME / STOCK): ");
         String sortOrder = scanner.nextLine();
 
         List<InventoryItem> results = manager.filterAndSort(category, fragileStatus, sortOrder);
@@ -173,14 +173,9 @@ public class Main {
         int stockOnHand = scanner.nextInt();
         scanner.nextLine();
 
-        // Input harga barang
-        System.out.print("Harga Barang (Rp): ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
-
-        // Buat item baru dengan 8 parameter (termasuk harga)
+        // Buat item baru
         InventoryItem newItem = new InventoryItem(itemId, itemName, itemCategory, isFragile, 
-                                                 expirationDate, location, stockOnHand, price);
+                                                 expirationDate, location, stockOnHand);
         if (manager.addItem(newItem)) {
             System.out.println("Barang berhasil ditambahkan!");
         } else {

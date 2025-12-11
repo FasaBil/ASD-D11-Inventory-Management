@@ -17,13 +17,12 @@ public class InventoryItem implements Comparable<InventoryItem> {
     private LocalDate expirationDate;
     private String location;
     private int stockOnHand;
-    private double price;  // Harga barang (untuk sorting)
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    // Constructor lengkap dengan harga
+    // Constructor lengkap
     public InventoryItem(String itemId, String itemName, String itemCategory, boolean isFragile, 
-                        LocalDate expirationDate, String location, int stockOnHand, double price) {
+                        LocalDate expirationDate, String location, int stockOnHand) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemCategory = itemCategory;
@@ -31,7 +30,6 @@ public class InventoryItem implements Comparable<InventoryItem> {
         this.expirationDate = expirationDate;
         this.location = location;
         this.stockOnHand = stockOnHand;
-        this.price = price;
     }
 
     // Constructor untuk load dari file
@@ -48,15 +46,13 @@ public class InventoryItem implements Comparable<InventoryItem> {
         }
         this.location = data[5];
         this.stockOnHand = Integer.parseInt(data[6]);
-        // Handle backward compatibility: old format tanpa harga
-        this.price = data.length > 7 ? Double.parseDouble(data[7]) : 0.0;
     }
 
-    // Metode untuk menyimpan ke file (dengan harga)
+    // Metode untuk menyimpan ke file
     public String toDataString() {
         String dateString = expirationDate == null ? "-" : expirationDate.format(DATE_FORMATTER);
         return String.join(";", itemId, itemName, itemCategory, String.valueOf(isFragile), 
-                          dateString, location, String.valueOf(stockOnHand), String.valueOf(price));
+                          dateString, location, String.valueOf(stockOnHand));
     }
 
     // Pengecekan apakah sudah expired
@@ -81,10 +77,8 @@ public class InventoryItem implements Comparable<InventoryItem> {
     public LocalDate getExpirationDate() { return expirationDate; }
     public String getLocation() { return location; }
     public int getStockOnHand() { return stockOnHand; }
-    public double getPrice() { return price; }
 
-    // ALGORITMA: Comparators untuk SORTING (NAMA, STOK, HARGA)
+    // ALGORITMA: Comparators untuk SORTING (NAMA, STOK)
     public static Comparator<InventoryItem> NAME_COMPARATOR = Comparator.comparing(InventoryItem::getItemName);
     public static Comparator<InventoryItem> STOCK_COMPARATOR = Comparator.comparingInt(InventoryItem::getStockOnHand).reversed();
-    public static Comparator<InventoryItem> PRICE_COMPARATOR = Comparator.comparingDouble(InventoryItem::getPrice).reversed();
 }
