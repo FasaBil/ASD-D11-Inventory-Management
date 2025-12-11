@@ -1,30 +1,30 @@
-FG01;Beras Premium 5kg;Finished Goods;false;2026-01-10;FG-A1;120
-FG02;Gula Pasir 1kg;Finished Goods;false;2025-12-01;FG-A2;200
-FG03;Minyak Goreng 1L;Finished Goods;false;2025-11-20;FG-A3;180
-FG04;Telur Ayam 1 Rak;Finished Goods;true;2025-04-05;FG-A4;60
-FG05;Susu Kental Manis;Finished Goods;false;2026-03-15;FG-A5;90
-FG06;Mie Instan Ayam;Finished Goods;false;2025-09-15;FG-A6;500
-FG07;Teh Celup;Finished Goods;false;2026-02-05;FG-A7;130
-FG08;Kopi Kapal Api Sachet;Finished Goods;false;2026-01-28;FG-A8;300
-FG09;Sarden Kaleng;Finished Goods;false;2027-06-30;FG-A9;110
-FG10;Kecap Manis Botol;Finished Goods;false;2026-04-22;FG-A10;70
-FG11;Susu Bubuk Anak;Finished Goods;false;2025-12-20;FG-A11;45
-FG12;Bumbu Penyedap;Finished Goods;false;2026-05-18;FG-A12;250
-FG13;Air Mineral Botol 600ml;Finished Goods;false;2026-07-10;FG-A13;500
-FG14;Saus Sambal Botol;Finished Goods;false;2026-06-09;FG-A14;80
-FG15;Biskuit Kaleng;Finished Goods;false;2026-12-01;FG-A15;40
-MT16;Garam Kasar;Material;false;-;MT-B1;300
-MT17;Tepung Terigu Curah;Material;false;-;MT-B2;200
-MT18;Gula Merah Cetak;Material;false;-;MT-B3;150
-MT19;Jagung Pipil;Material;false;-;MT-B4;180
-MT20;Biji Kopi Robust;Material;false;-;MT-B5;100
-MT21;Kacang Tanah Mentah;Material;false;-;MT-B6;120
-MT22;Bawang Putih Kering;Material;false;-;MT-B7;190
-MT23;Cabe Kering;Material;false;-;MT-B8;80
-MT24;Daun Teh Curah;Material;false;-;MT-B9;140
-MT25;Kedelai Mentah;Material;false;-;MT-B10;250
-FG26;Roti Tawar Plastik;Finished Goods;true;2025-03-15;FG-A16;40
-FG27;Susu UHT 1L;Finished Goods;false;2025-09-29;FG-A17;70
-FG28;Sirup Botol;Finished Goods;false;2027-01-10;FG-A18;60
-FG29;Kerupuk Putih;Finished Goods;false;2026-08-11;FG-A19;100
-FG30;Minyak Goreng Curah;Finished Goods;false;2025-10-01;FG-A20;90
+MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
+MK02;Gula Pasir 1kg;Makanan;false;-;R-A2;90
+MK03;Minyak Goreng 1L;Makanan;false;-;R-A3;150
+MK04;Mie Instan Goreng;Makanan;true;2026-01-10;R-A4;300
+MK05;Telur Ayam;Makanan;true;2025-12-28;R-A5;200
+MK06;Susu Bubuk 400g;Makanan;true;2026-05-20;R-A6;60
+MK07;Tepung Terigu 1kg;Makanan;false;-;R-A7;80
+MK08;Sarden Kaleng;Makanan;true;2027-02-01;R-A8;110
+MK09;Kopi Sachet;Makanan;false;-;R-A9;250
+MK10;Teh Celup 25pcs;Makanan;false;-;R-A10;140
+MK11;Biskuit Kaleng;Makanan;true;2026-04-11;R-B1;70
+MK12;Kecap Manis 600ml;Makanan;false;-;R-B2;95
+MK13;Saus Sambal 135ml;Makanan;false;-;R-B3;100
+MK14;Susu UHT 1L;Makanan;true;2026-02-18;R-B4;50
+MK15;Air Mineral 600ml;Makanan;false;-;R-B5;300
+MK16;Roti Tawar;Makanan;true;2025-12-22;R-B6;40
+MK17;Kentang 1kg;Makanan;true;2025-12-25;R-B7;60
+MK18;Bawang Merah 1kg;Makanan;true;2025-12-27;R-B8;75
+MK19;Bawang Putih 1kg;Makanan;true;2026-01-02;R-B9;80
+MK20;Ikan Asin 250g;Makanan;true;2026-03-15;R-B10;40
+NM21;Sabun Mandi Batang;Non-Makanan;false;-;N-C1;200
+NM22;Shampoo Sachet;Non-Makanan;false;-;N-C2;300
+NM23;Pasta Gigi 100g;Non-Makanan;false;-;N-C3;150
+NM24;Detergen Bubuk 1kg;Non-Makanan;false;-;N-C4;100
+NM25;Pewangi Pakaian;Non-Makanan;false;-;N-C5;80
+NM26;Tisu Wajah;Non-Makanan;false;-;N-C6;90
+NM27;Plastik Kresek;Non-Makanan;false;-;N-C7;500
+NM28;Gas Elpiji 3kg;Non-Makanan;false;-;N-C8;40
+NM29;Obat Nyamuk Bakar;Non-Makanan;false;-;N-C9;120
+NM30;Sikat Gigi;Non-Makanan;false;-;N-C10;150
