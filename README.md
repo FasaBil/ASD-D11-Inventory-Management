@@ -53,11 +53,11 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 -  **Filter** - By kategori (Material/Finished Goods) & fragile status
 -  **Tree Traversal** - Navigasi kategori menggunakan Binary Tree
 
-### 📈 **Sorting**
-- ✅ Sort by **Nama** (A-Z)
-- ✅ Sort by **Stok** (Descending)
-- ✅ Sort by **ID**
-- ✅ Implementasi manual **Bubble Sort** (O(n²))
+###  **Sorting**
+-  Sort by **Nama** (A-Z)
+-  Sort by **Stok** (Descending)
+-  Sort by **ID**
+-  Implementasi manual **Bubble Sort** (O(n²))
 
 ###  **Expired Management**
 -  **Priority Queue** - Auto-sort expired items by date
@@ -338,9 +338,9 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 ##  Format Data (inventory_data.txt)
 
 ```
-ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok
-SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100
-MT001;Steel Plate;Material;false;-;M-A1;50
+ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;
+SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100;5000.0
+MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 ```
 
 **Field:**
