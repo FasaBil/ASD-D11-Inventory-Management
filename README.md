@@ -335,14 +335,6 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 
 ---
 
-##  Teknologi & Tools
-
-- **Language:** Java 17+
-- **Build Tool:** Manual compile (javac)
-- **Data Storage:** Text file (CSV-like format)
-- **Version Control:** Git & GitHub
-- **IDE:** VS Code / IntelliJ IDEA
-
 ---
 
 ##  Format Data (inventory_data.txt)
@@ -365,18 +357,6 @@ MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 
 ---
 
-##  Learning Outcomes
-
-Proyek ini mendemonstrasikan pemahaman tentang:
-
-1.  **Algoritma Searching** - Linear Search implementation
-2.  **Algoritma Sorting** - Bubble Sort dengan nested loop
-3.  **Tree & Traversal** - Binary Tree + DFS recursive
-4.  **Priority Queue** - Heap structure & Comparable
-5.  **Kompleksitas Algoritma** - Big-O notation dalam praktik
-6.  **Data Structures** - HashMap, ArrayList, Binary Tree, Heap
-7.  **Rekursi** - Base case & recursive case
-8.  **OOP** - Encapsulation, inheritance (Comparable)
 
 
 
