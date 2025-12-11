@@ -56,7 +56,6 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 ###  **Sorting**
 -  Sort by **Nama** (A-Z)
 -  Sort by **Stok** (Descending)
--  Sort by **Harga** (Descending)
 -  Sort by **ID**
 -  Implementasi manual **Bubble Sort** (O(n²))
 
@@ -210,7 +209,6 @@ Fragile? (true/false): true
 Expiration Date (YYYY-MM-DD / Kosong): 2025-12-31
 Lokasi diatur otomatis ke: F-01
 Stok Tersedia: 100
-Harga Barang (Rp): 5000
 
 [Tree Traversal DFS] Memulai pencarian kategori untuk: Spring Water
   [DFS] Mengunjungi node: All Categories
@@ -340,7 +338,7 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 ##  Format Data (inventory_data.txt)
 
 ```
-ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;Harga
+ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;
 SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100;5000.0
 MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 ```
@@ -353,7 +351,6 @@ MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 - ExpDate: YYYY-MM-DD atau "-" (no expiration)
 - Lokasi: String (auto-assigned)
 - Stok: int
-- Harga: double
 
 ---
 
