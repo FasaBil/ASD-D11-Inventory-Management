@@ -108,7 +108,7 @@ public class Main {
     private static void handleFilterAndSortMenu() {
         System.out.println("\n--- Filter & Sort NON-Expired Items ---");
 
-        System.out.print("Filter berdasarkan Kategori (Material / Finished Goods / ALL): ");
+        System.out.print("Filter berdasarkan Kategori (Makanan / Non-Makanan / ALL): ");
         String category = scanner.nextLine();
 
         System.out.print("Filter berdasarkan Fragile (YES / NO / ANY): ");
@@ -139,7 +139,11 @@ public class Main {
         System.out.print("Nama Barang: ");
         String itemName = scanner.nextLine();
 
-        System.out.print("Kategori Barang (Material / Finished Goods): ");
+        System.out.println("Kategori Barang:");
+        System.out.println("  Makanan: Beras, Gula, Minyak, Telur, Susu UHT, Susu Bubuk, Mie Instan, Roti,");
+        System.out.println("           Kecap, Saus, Bumbu, Teh, Kopi, Biskuit, Kerupuk, Sarden, dll.");
+        System.out.println("  Non-Makanan: Perlengkapan Rumah, Air Minum / Kemasan, Kebersihan & Kesehatan");
+        System.out.print("Masukkan kategori: ");
         String itemCategory = scanner.nextLine();
 
         System.out.print("Fragile? (true/false): ");
@@ -158,14 +162,14 @@ public class Main {
             }
         }
 
-        // Logika lokasi sederhana
+        // Logika lokasi berdasarkan kategori dan ID
         String location;
-        if (isFragile) {
-            location = "F-01"; // Fragile
-        } else if (itemCategory.equalsIgnoreCase("Material")) {
-            location = "M-A1"; // Material
+        if (itemId.startsWith("MK")) {
+            location = "R-" + itemId.substring(2); // Makanan: R-01, R-02, dst
+        } else if (itemId.startsWith("NM")) {
+            location = "N-" + itemId.substring(2); // Non-Makanan: N-01, N-02, dst
         } else {
-            location = "B-01"; // Finished Goods/Biasa
+            location = isFragile ? "F-01" : "B-01";
         }
         System.out.println("Lokasi diatur otomatis ke: " + location);
 

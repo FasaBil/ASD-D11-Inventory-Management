@@ -49,13 +49,117 @@ public class WarehouseManager {
         quickAccessMap = new HashMap<>();
         expiredQueue = new PriorityQueue<>();  // Auto-sort by expiration date
 
-        // Setup Binary Tree structure
-        CategoryNode finishedGoods = new CategoryNode("Finished Goods");
-        CategoryNode material = new CategoryNode("Material");
-        root.setLeftChild(finishedGoods);   // Binary tree: left child
-        root.setRightChild(material);       // Binary tree: right child
-
+        // Setup Binary Tree structure dengan hierarki lengkap
+        buildCategoryTree();
+        
         loadDataFromFile();
+    }
+    
+    /**
+     * Membangun Binary Tree dengan struktur kategori lengkap
+     * Struktur: All Categories -> Makanan / Non-Makanan -> Sub-kategori
+     */
+    private void buildCategoryTree() {
+        // Level 1: Main categories
+        CategoryNode makanan = new CategoryNode("Makanan");
+        CategoryNode nonMakanan = new CategoryNode("Non-Makanan");
+        
+        root.setLeftChild(nonMakanan);
+        root.setRightChild(makanan);
+        
+        // Level 2 Makanan: Sub-kategori makanan
+        CategoryNode sembakoUtama = new CategoryNode("Sembako Utama");
+        CategoryNode telurSusu = new CategoryNode("Telur & Produk Susu");
+        CategoryNode mieProdukGandum = new CategoryNode("Mie & Produk Gandum");
+        CategoryNode bumbuPenyedap = new CategoryNode("Bumbu & Penyedap");
+        CategoryNode minuman = new CategoryNode("Minuman");
+        CategoryNode makananRingan = new CategoryNode("Makanan Ringan");
+        CategoryNode kalengOlahan = new CategoryNode("Kaleng & Olahan");
+        CategoryNode bahanMentah = new CategoryNode("Bahan Mentah");
+        
+        makanan.setLeftChild(sembakoUtama);
+        makanan.setRightChild(telurSusu);
+        sembakoUtama.setLeftChild(mieProdukGandum);
+        sembakoUtama.setRightChild(bumbuPenyedap);
+        telurSusu.setLeftChild(minuman);
+        telurSusu.setRightChild(makananRingan);
+        minuman.setLeftChild(kalengOlahan);
+        minuman.setRightChild(bahanMentah);
+        
+        // Level 2 Non-Makanan: Sub-kategori non-makanan
+        CategoryNode kebutuhanRT = new CategoryNode("Kebutuhan Rumah Tangga");
+        CategoryNode kebersihanKesehatan = new CategoryNode("Kebersihan & Kesehatan");
+        
+        nonMakanan.setLeftChild(kebutuhanRT);
+        nonMakanan.setRightChild(kebersihanKesehatan);
+        
+        // Level 3 Sembako Utama
+        CategoryNode beras = new CategoryNode("Beras");
+        CategoryNode gula = new CategoryNode("Gula");
+        CategoryNode minyak = new CategoryNode("Minyak");
+        CategoryNode tepung = new CategoryNode("Tepung");
+        sembakoUtama.setLeftChild(beras);
+        sembakoUtama.setRightChild(gula);
+        beras.setLeftChild(minyak);
+        beras.setRightChild(tepung);
+        
+        // Level 3 Telur & Produk Susu
+        CategoryNode telur = new CategoryNode("Telur");
+        CategoryNode susuUHT = new CategoryNode("Susu UHT");
+        CategoryNode susuBubuk = new CategoryNode("Susu Bubuk");
+        telurSusu.setLeftChild(telur);
+        telurSusu.setRightChild(susuUHT);
+        susuUHT.setLeftChild(susuBubuk);
+        
+        // Level 3 Mie & Produk Gandum
+        CategoryNode mieInstan = new CategoryNode("Mie Instan");
+        CategoryNode roti = new CategoryNode("Roti");
+        mieProdukGandum.setLeftChild(mieInstan);
+        mieProdukGandum.setRightChild(roti);
+        
+        // Level 3 Bumbu & Penyedap
+        CategoryNode kecap = new CategoryNode("Kecap");
+        CategoryNode saus = new CategoryNode("Saus");
+        CategoryNode bumbu = new CategoryNode("Bumbu");
+        CategoryNode bumbuKering = new CategoryNode("Bumbu Kering");
+        bumbuPenyedap.setLeftChild(kecap);
+        bumbuPenyedap.setRightChild(saus);
+        saus.setLeftChild(bumbu);
+        saus.setRightChild(bumbuKering);
+        
+        // Level 3 Minuman
+        CategoryNode teh = new CategoryNode("Teh");
+        CategoryNode kopi = new CategoryNode("Kopi");
+        minuman.setLeftChild(teh);
+        minuman.setRightChild(kopi);
+        
+        // Level 3 Makanan Ringan
+        CategoryNode biskuit = new CategoryNode("Biskuit");
+        CategoryNode kerupuk = new CategoryNode("Kerupuk");
+        makananRingan.setLeftChild(biskuit);
+        makananRingan.setRightChild(kerupuk);
+        
+        // Level 3 Kaleng & Olahan
+        CategoryNode sarden = new CategoryNode("Sarden");
+        CategoryNode olahanLain = new CategoryNode("Olahan Lain");
+        kalengOlahan.setLeftChild(sarden);
+        kalengOlahan.setRightChild(olahanLain);
+        
+        // Level 3 Bahan Mentah
+        CategoryNode jagung = new CategoryNode("Jagung");
+        CategoryNode kedelai = new CategoryNode("Kedelai");
+        CategoryNode kacangTanah = new CategoryNode("Kacang Tanah");
+        CategoryNode gulaMerah = new CategoryNode("Gula Merah");
+        bahanMentah.setLeftChild(jagung);
+        bahanMentah.setRightChild(kedelai);
+        kedelai.setLeftChild(kacangTanah);
+        kedelai.setRightChild(gulaMerah);
+        
+        // Level 3 Non-Makanan
+        CategoryNode perlengkapanRumah = new CategoryNode("Perlengkapan Rumah");
+        CategoryNode airMinumKemasan = new CategoryNode("Air Minum / Kemasan");
+        kebutuhanRT.setLeftChild(perlengkapanRumah);
+        kebutuhanRT.setRightChild(airMinumKemasan);
     }
 
     // ============================================
