@@ -71,75 +71,23 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 ### 1️ **Binary Tree** (CategoryNode.java)
 ```
 Root: "All Categories"
-              /                               \
-     "Non-Makanan"                       "Makanan"
-           |                                   |
-           |                                   |
-   ----------------                    ---------------------
-   |              |                    |        |          |
-"Kebutuhan   "Kebersihan &     "Sembako Utama"  "Telur & Produk Susu"
-Rumah Tangga"   Kesehatan"            |                     |
-   |              |                   |                     |
-   |              |            ----------------       -----------------
-   |              |            |      |     |         |       |      |
-   |              |         "Beras" "Gula" "Minyak" "Telur" "Susu UHT" "Susu Bubuk"
-   |              |
-   |              |
-   |         "Perlengkapan Rumah"
-   |              |
-   |         "Air Minum / Kemasan"
-   |
-   |
---------------------------------------------------------------------------------------------------
-                                      |
-                                      |
-                           "Mie & Produk Gandum"
-                                      |
-                               ----------------
-                              |                |
-                          "Mie Instan"     "Roti"
-                                     
-                                      |
-                                      |
-                               "Bumbu & Penyedap"
-                                      |
-                     -----------------------------------
-                    |           |           |           |
-                 "Kecap"     "Saus"     "Bumbu"     "Bumbu Kering"
-                                          |             |
-                                   (penyedap)   (bawang kering, cabe kering, dll)
+                 |
+     --------------------------------
+     |                              |
+ "Makanan"                     "Non-Makanan"
+     |
+     |
+-------------------------------------------------------------------------------------
+|                 |                |                |                 |             |
+"Sembako Utama"   "Bumbu &         "Mie & Produk    "Telur & Produk   "Minuman"    "Makanan
+                  Penyedap"         Gandum"          Susu"                           Ringan"
+|                 |                |                |                 |             |
+|                 |                |                |                 |             |
+---------      ----------------   ------------    -----------------   ------------------   ------------------
+|   |   |      |   |    |        |         |      |      |        |   |     |        |   |         |
+Beras Gula Minyak  Kecap Saus  Bumbu     Mie     Roti    Telur  Susu UHT Susu Bubuk  Teh Kopi Min. Kemasan Biskuit Kerupuk
 
-                                      |
-                                      |
-                                  "Minuman"
-                                      |
-                    ----------------------------------
-                    |                |               |
-                 "Teh"             "Kopi"        "Sirup / Minuman Botol"
 
-                                      |
-                                      |
-                               "Makanan Ringan"
-                                      |
-                              -------------------
-                              |                 |
-                           "Biskuit"        "Kerupuk"
-
-                                      |
-                                      |
-                               "Kaleng & Olahan"
-                                      |
-                              -------------------
-                              |                 |
-                           "Sarden"          "Olahan Lain"
-
-                                      |
-                                      |
-                                 "Bahan Mentah"
-                                      |
-                 -------------------------------------------------
-                 |             |              |                 |
-             "Jagung"     "Kedelai"   "Kacang Tanah"   "Gula Merah"
 ```
 - **Kegunaan:** Hierarki kategori barang
 - **Algoritma:** DFS Pre-order Traversal
