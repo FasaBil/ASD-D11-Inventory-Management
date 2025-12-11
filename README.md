@@ -1,4 +1,4 @@
-# 📦 Warehouse Management System
+# Warehouse Management System
 ## Sistem Manajemen Inventaris Gudang
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 Informasi Proyek
+##  Informasi Proyek
 
 | Aspek | Detail |
 |-------|--------|
@@ -18,7 +18,7 @@
 
 ---
 
-## 👥 Anggota Kelompok
+##  Anggota Kelompok
 
 | Nama | NRP |
 |------|-----|
@@ -28,9 +28,9 @@
 
 ---
 
-## 📖 Deskripsi Proyek
+##  Deskripsi Proyek
 
-Warehouse Management System adalah aplikasi console-based untuk mengelola inventaris gudang dengan implementasi **4 algoritma dan struktur data** yang dipelajari dalam mata kuliah ASD:
+Warehouse Management System adalah aplikasi console-based untuk mengelola inventaris gudang dengan implementasi **4 algoritma dan struktur data**:
 
 1. **Tree Traversal (DFS)** - Recursive Depth-First Search untuk kategori barang
 2. **Linear Search** - Sequential search dengan partial matching
@@ -39,37 +39,37 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 
 ---
 
-## 🎯 Fitur Utama
+##  Fitur Utama
 
-### 📊 **Manajemen Inventaris**
-- ✅ Tambah barang baru (dengan validasi kategori & duplikasi)
-- ✅ Hapus barang berdasarkan ID
-- ✅ Auto-detect expired items & pindahkan ke storage terpisah
-- ✅ Notifikasi barang yang akan expired (14 hari)
-- ✅ Persistensi data ke file (`inventory_data.txt`)
+###  **Manajemen Inventaris**
+-  Tambah barang baru (dengan validasi kategori & duplikasi)
+-  Hapus barang berdasarkan ID
+-  Auto-detect expired items & pindahkan ke storage terpisah
+-  Notifikasi barang yang akan expired (14 hari)
+-  Persistensi data ke file (`inventory_data.txt`)
 
-### 🔍 **Pencarian & Filtering**
-- ✅ **Linear Search** - Cari barang berdasarkan nama (partial match)
-- ✅ **Filter** - By kategori (Material/Finished Goods) & fragile status
-- ✅ **Tree Traversal** - Navigasi kategori menggunakan Binary Tree
+###  **Pencarian & Filtering**
+-  **Linear Search** - Cari barang berdasarkan nama (partial match)
+-  **Filter** - By kategori (Material/Finished Goods) & fragile status
+-  **Tree Traversal** - Navigasi kategori menggunakan Binary Tree
 
-### 📈 **Sorting**
-- ✅ Sort by **Nama** (A-Z)
-- ✅ Sort by **Stok** (Descending)
-- ✅ Sort by **Harga** (Descending)
-- ✅ Sort by **ID**
-- ✅ Implementasi manual **Bubble Sort** (O(n²))
+###  **Sorting**
+-  Sort by **Nama** (A-Z)
+-  Sort by **Stok** (Descending)
+-  Sort by **Harga** (Descending)
+-  Sort by **ID**
+-  Implementasi manual **Bubble Sort** (O(n²))
 
-### ⏰ **Expired Management**
-- ✅ **Priority Queue** - Auto-sort expired items by date
-- ✅ Item dengan expiration date paling awal di prioritas
-- ✅ Binary heap structure (O(log n) insert)
+###  **Expired Management**
+-  **Priority Queue** - Auto-sort expired items by date
+-  Item dengan expiration date paling awal di prioritas
+-  Binary heap structure (O(log n) insert)
 
 ---
 
-## 🏗️ Struktur Data yang Digunakan
+##  Struktur Data yang Digunakan
 
-### 1️⃣ **Binary Tree** (CategoryNode.java)
+### 1️ **Binary Tree** (CategoryNode.java)
 ```
          Root: "All Categories"
               /              \
@@ -80,22 +80,22 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 - **Algoritma:** DFS Pre-order Traversal
 - **Kompleksitas:** O(h) - h = tinggi tree
 
-### 2️⃣ **HashMap** (quickAccessMap)
+### 2️ **HashMap** (quickAccessMap)
 - **Kegunaan:** Quick access item by ID
 - **Kompleksitas:** O(1) untuk get/put
 
-### 3️⃣ **Priority Queue** (expiredQueue)
+### 3️ **Priority Queue** (expiredQueue)
 - **Kegunaan:** Auto-sort expired items (min-heap)
 - **Implementasi:** Binary heap via `Comparable`
 - **Kompleksitas:** O(log n) insert, O(1) peek
 
-### 4️⃣ **ArrayList**
+### 4️ **ArrayList**
 - **Kegunaan:** Dynamic list untuk filtering & sorting
 - **Digunakan di:** Bubble Sort, Linear Search
 
 ---
 
-## 🧮 Algoritma yang Diimplementasikan
+##  Algoritma yang Diimplementasikan
 
 ### 1. **Tree Traversal (DFS)** - O(h)
 ```java
@@ -149,7 +149,7 @@ expiredQueue.offer(item);
 
 ---
 
-## 📁 Struktur File
+##  Struktur File
 
 ```
 ADS/
@@ -168,7 +168,7 @@ ADS/
 
 ---
 
-## 🚀 Cara Menjalankan
+##  Cara Menjalankan
 
 ### **Prasyarat:**
 - Java JDK 11 atau lebih tinggi
@@ -198,7 +198,7 @@ ADS/
 
 ---
 
-## 💻 Contoh Penggunaan
+##  Contoh Penggunaan
 
 ### **1. Tambah Barang Baru**
 ```
@@ -255,7 +255,7 @@ Urutkan berdasarkan (ID / NAME / STOCK / PRICE): NAME
 
 ---
 
-## 📊 Kompleksitas Algoritma
+##  Kompleksitas Algoritma
 
 | Algoritma | Kompleksitas Waktu | Kompleksitas Ruang | Implementasi |
 |-----------|-------------------|-------------------|--------------|
@@ -267,7 +267,7 @@ Urutkan berdasarkan (ID / NAME / STOCK / PRICE): NAME
 
 ---
 
-## 🎓 Konsep ASD yang Diterapkan
+##  Konsep yang Diterapkan
 
 ### **1. Rekursi**
 - DFS Tree Traversal menggunakan rekursi
@@ -293,16 +293,16 @@ Urutkan berdasarkan (ID / NAME / STOCK / PRICE): NAME
 
 ---
 
-## 🔄 Perbaikan dari Versi Sebelumnya
+##  Perbaikan dari Versi Sebelumnya
 
-### **❌ Masalah Sebelumnya:**
+### ** Masalah Sebelumnya:**
 ```java
 // Hanya "memanggil" library, bukan implementasi algoritma
 return stream().filter(...).collect(Collectors.toList());  // Linear Search
 filtered.sort(comparator);  // Sorting (Timsort)
 ```
 
-### **✅ Solusi Sekarang:**
+### ** Solusi Sekarang:**
 ```java
 // Implementasi manual algoritma dengan kompleksitas terlihat jelas
 for (InventoryItem item : items) {  // Linear Search O(n)
@@ -321,21 +321,21 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 ---
 
 
-## 🧪 Testing
+##  Testing
 
 ### **Skenario Test:**
-1. ✅ Add item dengan kategori valid (Finished Goods / Material)
-2. ✅ Add item expired → langsung masuk expired queue
-3. ✅ Search dengan partial match (case-insensitive)
-4. ✅ Sort ascending/descending
-5. ✅ Filter by kategori & fragile status
-6. ✅ Delete item → hapus dari tree & map
-7. ✅ Check expired notification (14 hari)
-8. ✅ Persistensi data (save/load file)
+1.  Add item dengan kategori valid (Finished Goods / Material)
+2.  Add item expired → langsung masuk expired queue
+3.  Search dengan partial match (case-insensitive)
+4.  Sort ascending/descending
+5.  Filter by kategori & fragile status
+6.  Delete item → hapus dari tree & map
+7.  Check expired notification (14 hari)
+8.  Persistensi data (save/load file)
 
 ---
 
-## 🛠️ Teknologi & Tools
+##  Teknologi & Tools
 
 - **Language:** Java 17+
 - **Build Tool:** Manual compile (javac)
@@ -345,7 +345,7 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 
 ---
 
-## 📝 Format Data (inventory_data.txt)
+##  Format Data (inventory_data.txt)
 
 ```
 ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;Harga
@@ -365,21 +365,18 @@ MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 
 ---
 
-## 🎯 Learning Outcomes
+##  Learning Outcomes
 
 Proyek ini mendemonstrasikan pemahaman tentang:
 
-1. ✅ **Algoritma Searching** - Linear Search implementation
-2. ✅ **Algoritma Sorting** - Bubble Sort dengan nested loop
-3. ✅ **Tree & Traversal** - Binary Tree + DFS recursive
-4. ✅ **Priority Queue** - Heap structure & Comparable
-5. ✅ **Kompleksitas Algoritma** - Big-O notation dalam praktik
-6. ✅ **Data Structures** - HashMap, ArrayList, Binary Tree, Heap
-7. ✅ **Rekursi** - Base case & recursive case
-8. ✅ **OOP** - Encapsulation, inheritance (Comparable)
+1.  **Algoritma Searching** - Linear Search implementation
+2.  **Algoritma Sorting** - Bubble Sort dengan nested loop
+3.  **Tree & Traversal** - Binary Tree + DFS recursive
+4.  **Priority Queue** - Heap structure & Comparable
+5.  **Kompleksitas Algoritma** - Big-O notation dalam praktik
+6.  **Data Structures** - HashMap, ArrayList, Binary Tree, Heap
+7.  **Rekursi** - Base case & recursive case
+8.  **OOP** - Encapsulation, inheritance (Comparable)
 
 
 
-## 📄 License
-
-Proyek ini dibuat untuk keperluan akademik Mata Kuliah Algoritma dan Struktur Data (ASD) - Institut Teknologi Sepuluh Nopember.
