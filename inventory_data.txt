@@ -8,25 +8,21 @@ FG07;Teh Celup;Finished Goods;false;2026-02-05;FG-A7;130
 FG08;Kopi Kapal Api Sachet;Finished Goods;false;2026-01-28;FG-A8;300
 FG09;Sarden Kaleng;Finished Goods;false;2027-06-30;FG-A9;110
 FG10;Kecap Manis Botol;Finished Goods;false;2026-04-22;FG-A10;70
-
 FG11;Susu Bubuk Anak;Finished Goods;false;2025-12-20;FG-A11;45
 FG12;Bumbu Penyedap;Finished Goods;false;2026-05-18;FG-A12;250
 FG13;Air Mineral Botol 600ml;Finished Goods;false;2026-07-10;FG-A13;500
 FG14;Saus Sambal Botol;Finished Goods;false;2026-06-09;FG-A14;80
 FG15;Biskuit Kaleng;Finished Goods;false;2026-12-01;FG-A15;40
-
 MT16;Garam Kasar;Material;false;-;MT-B1;300
 MT17;Tepung Terigu Curah;Material;false;-;MT-B2;200
 MT18;Gula Merah Cetak;Material;false;-;MT-B3;150
 MT19;Jagung Pipil;Material;false;-;MT-B4;180
 MT20;Biji Kopi Robust;Material;false;-;MT-B5;100
-
 MT21;Kacang Tanah Mentah;Material;false;-;MT-B6;120
 MT22;Bawang Putih Kering;Material;false;-;MT-B7;190
 MT23;Cabe Kering;Material;false;-;MT-B8;80
 MT24;Daun Teh Curah;Material;false;-;MT-B9;140
 MT25;Kedelai Mentah;Material;false;-;MT-B10;250
-
 FG26;Roti Tawar Plastik;Finished Goods;true;2025-03-15;FG-A16;40
 FG27;Susu UHT 1L;Finished Goods;false;2025-09-29;FG-A17;70
 FG28;Sirup Botol;Finished Goods;false;2027-01-10;FG-A18;60
