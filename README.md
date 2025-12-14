@@ -383,19 +383,6 @@ Urutkan berdasarkan (ID / NAME / STOCK): NAME
 | MK05     | Telur Ayam           | Makanan         | Yes      | 2025-12-28      | R-A5       | 200   |
 +----------+----------------------+-----------------+----------+-----------------+------------+-------+
 ```
-
----
-
-##  Kompleksitas Algoritma
-
-| Algoritma | Kompleksitas Waktu | Kompleksitas Ruang | Implementasi |
-|-----------|-------------------|-------------------|--------------|
-| **Tree Traversal (DFS)** | O(h) - O(n) worst | O(h) recursive stack | `addItemToCategoryTreeRecursive()` |
-| **Linear Search** | O(n) | O(1) | `searchItemByName()` |
-| **Bubble Sort** | O(n²) | O(1) | `bubbleSortByName/Stock/Id()` |
-| **Priority Queue Insert** | O(log n) | O(n) heap storage | `expiredQueue.offer()` |
-| **HashMap Access** | O(1) average | O(n) | `quickAccessMap.get()` |
-
 ---
 
 ##  Konsep yang Diterapkan
