@@ -456,26 +456,6 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 
 ---
 
-##  Proyek Kelompok Lain
-
-Berikut adalah daftar repositori proyek akhir dari kelompok lain di kelas D:
-
-| Kelompok | Judul Proyek | Link Repository |
-|----------|--------------|-----------------|
-| D-1 | TBD | TBD |
-| D-2 | TBD | TBD |
-| D-3 | TBD | TBD |
-| D-4 | TBD | TBD |
-| D-5 | TBD | TBD |
-| D-6 | TBD | TBD |
-| D-7 | TBD | TBD |
-| D-8 | TBD | TBD |
-| D-9 | TBD | TBD |
-| D-10 | TBD | TBD |
-| D-12 | TBD | TBD |
-
----
-
 ##  Update Log
 
 ### Update 1 - [Tanggal akan diisi saat ada update]
