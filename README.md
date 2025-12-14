@@ -465,12 +465,6 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 
 ---
 
-##  Catatan Penting
-
-- Batas waktu penilaian: **Minggu, 14 Desember 2025, pukul 16.00**
-- Update program diperbolehkan hingga waktu tersebut
-- Setiap update akan didokumentasikan dalam Update Log di atas
-
 ---
 
 
