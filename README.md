@@ -443,7 +443,7 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ##  Screenshot Program
 
 ### Menu Utama
-![Menu Utama](https://via.placeholder.com/600x300?text=Menu+Utama+Warehouse+Management)
+![Menu Utama]([https://via.placeholder.com/600x300?text=Menu+Utama+Warehouse+Management](https://ibb.co.com/k60sDkbd))
 
 ### Penambahan Barang dengan Tree Traversal
 ![Tree Traversal](https://via.placeholder.com/600x300?text=DFS+Tree+Traversal)
