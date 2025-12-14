@@ -262,19 +262,23 @@ ADS/
 ### **1. Tambah Barang Baru**
 ```
 --- Tambah Barang Baru ---
-ID Barang (Ex: SB1, BB2): SB001
+ID Barang (Ex: MK01, NM01): MK01
 Nama Barang: Spring Water
-Kategori Barang (Material / Finished Goods): Finished Goods
+Kategori Barang:
+  Makanan: Beras, Gula, Minyak, Telur, Susu UHT, Susu Bubuk, Mie Instan, Roti,
+           Kecap, Saus, Bumbu, Teh, Kopi, Biskuit, Kerupuk, Sarden, dll.
+  Non-Makanan: Perlengkapan Rumah, Air Minum / Kemasan, Kebersihan & Kesehatan
+Masukkan kategori: Non-Makanan
 Fragile? (true/false): true
 Expiration Date (YYYY-MM-DD / Kosong): 2025-12-31
-Lokasi diatur otomatis ke: F-01
+Lokasi diatur otomatis ke: R-01
 Stok Tersedia: 100
 
 [Tree Traversal DFS] Memulai pencarian kategori untuk: Spring Water
   [DFS] Mengunjungi node: All Categories
   [DFS] Mencari di left subtree dari: All Categories
-  [DFS] Mengunjungi node: Finished Goods
-  [DFS] ✓ Match! Item 'Spring Water' ditambahkan ke node: Finished Goods
+  [DFS] Mengunjungi node: Non-Makanan
+  [DFS] ✓ Match! Item 'Spring Water' ditambahkan ke node: Non-Makanan
 
 Barang berhasil ditambahkan!
 ```
@@ -305,10 +309,17 @@ Urutkan berdasarkan (ID / NAME / STOCK): NAME
 
 ### **4. Check Expired Items (Priority Queue)**
 ```
-[Priority Queue] Mengecek item expired...
-  [Heap Insert] Item expired dipindahkan: Milk | Exp: 2025-12-10 | Heap size: 1
-[Priority Queue] Total item dipindahkan: 1
-[Priority Queue] Item dengan expiration paling awal: Milk
+[Bubble Sort] Total swap: 4 operasi
+
+--- NOTIFIKASI: BARANG AKAN EXPIRED DALAM 14 HARI ---
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
+| ID       | Nama                 | Kategori        | Fragile  | Exp. Date       | Lokasi     | Stok  |
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
+| MK18     | Bawang Merah 1kg     | Makanan         | Yes      | 2025-12-27      | R-B8       | 75    |
+| MK17     | Kentang 1kg          | Makanan         | Yes      | 2025-12-25      | R-B7       | 60    |
+| MK16     | Roti Tawar           | Makanan         | Yes      | 2025-12-22      | R-B6       | 40    |
+| MK05     | Telur Ayam           | Makanan         | Yes      | 2025-12-28      | R-A5       | 200   |
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
 ```
 
 ---
@@ -416,16 +427,21 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ##  Screenshot Program
 
 ### Menu Utama
-![Menu Utama]([https://via.placeholder.com/600x300?text=Menu+Utama+Warehouse+Management](https://ibb.co.com/k60sDkbd))
+<img width="543" height="308" alt="image" src="https://github.com/user-attachments/assets/89132b98-0e93-4979-ad73-2b8ceeb80a26" />
 
 ### Penambahan Barang dengan Tree Traversal
-![Tree Traversal](https://via.placeholder.com/600x300?text=DFS+Tree+Traversal)
+<img width="826" height="406" alt="image" src="https://github.com/user-attachments/assets/3f25195a-e70e-4dda-aca9-53543de98c03" />
+<img width="664" height="525" alt="image" src="https://github.com/user-attachments/assets/862d8430-a8f5-4675-97a4-2f9a58a83fda" />
 
 ### Pencarian dengan Linear Search
-![Linear Search](https://via.placeholder.com/600x300?text=Linear+Search+Result)
+<img width="1046" height="501" alt="image" src="https://github.com/user-attachments/assets/c45a32b3-16e1-4f02-92fd-6fc836c93406" />
 
 ### Sorting dengan Bubble Sort
-![Bubble Sort](https://via.placeholder.com/600x300?text=Bubble+Sort+Output)
+<img width="1048" height="527" alt="image" src="https://github.com/user-attachments/assets/dc810903-b1fb-4e7c-b1d2-cb7dd2c09559" />
+
+## Check Expired Items
+<img width="1037" height="262" alt="image" src="https://github.com/user-attachments/assets/4ba92d7b-ad71-45aa-8d48-1ecb5d95261f" />
+
 
 ---
 ## Daftar Kelompok Lain
@@ -446,18 +462,6 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 | 12 | D-12 | https://github.com/Dziky05/FP-ASD-KEL-13 |
 | 13 | D-13 | https://github.com/FashaAsshofa/Final-Project-ASD-D-Kelompok-13 |
 | 14 | D-14 | https://github.com/neutralcheeze/final-project-asd.git |
----
-
----
-
-##  Update Log
-
-### Update 1 - [Tanggal akan diisi saat ada update]
-**Deskripsi Update:** -  
-**File yang Diubah:** -  
----
-**Link Video (jika ada perubahan UI):** -
-
 ---
 
 
