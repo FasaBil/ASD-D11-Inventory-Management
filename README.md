@@ -1,4 +1,3 @@
-<img width="420" height="370" alt="image" src="https://github.com/user-attachments/assets/b4874d7f-6b6a-4b51-ba0b-48a1810fe933" /># Warehouse Management System
 ## Sistem Manajemen Inventaris Gudang
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
@@ -433,20 +432,20 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 
 | No | Nama | GitHub |
 |----|------|--------|
-| 1  | D-1  |  |
-| 2  | D-2  |  |
-| 3  | D-3  |  |
-| 4  | D-4  |  |
+| 1  | D-1  | https://github.com/NashiwaInsan/asdfinalproject |
+| 2  | D-2  | https://github.com/dedyirama-id/kael-recommendation-system |
+| 3  | D-3  | https://github.com/Sudukk/FP_ASD_Traffic_Light_Simulation_FINAL |
+| 4  | D-4  | https://github.com/dreadf/hotelseek |
 | 5  | D-5  |  |
-| 6  | D-6  |  |
-| 7  | D-7  |  |
-| 8  | D-8  |  |
-| 9  | D-9  |  |
-| 10 | D-10 |  |
-| 11 | D-11 |  |
-| 12 | D-12 |  |
-| 13 | D-13 |  |
-| 14 | D-14 |  |
+| 6  | D-6  | https://github.com/anggraitapr/ASDFPTODOLIST |
+| 7  | D-7  | https://github.com/WilliamHanantha/FP-ASD |
+| 8  | D-8  | https://github.com/tyr3x74/GymPlan |
+| 9  | D-9  | https://github.com/mariaelvina/FinalProjectD9 |
+| 10 | D-10 | https://github.com/Aida41104/FPASD |
+| 11 | D-11 | https://github.com/FasaBil/ASD-D11-Inventory-Management |
+| 12 | D-12 | https://github.com/Dziky05/FP-ASD-KEL-13 |
+| 13 | D-13 | https://github.com/FashaAsshofa/Final-Project-ASD-D-Kelompok-13 |
+| 14 | D-14 | https://github.com/neutralcheeze/final-project-asd.git |
 ---
 
 ---
@@ -456,6 +455,7 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ### Update 1 - [Tanggal akan diisi saat ada update]
 **Deskripsi Update:** -  
 **File yang Diubah:** -  
+---
 **Link Video (jika ada perubahan UI):** -
 
 ---
