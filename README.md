@@ -236,36 +236,6 @@ ADS/
 
 ---
 
-##  Cara Menjalankan
-
-### **Prasyarat:**
-- Java JDK 11 atau lebih tinggi
-- Terminal/Command Prompt
-
-### **Langkah-langkah:**
-
-1. **Clone repository:**
-   ```bash
-   git clone https://github.com/FasaBil/ASD-D5-Inventory-Management.git
-   cd ASD-D5-Inventory-Management
-   ```
-
-2. **Compile semua file Java:**
-   ```bash
-   javac *.java
-   ```
-
-3. **Jalankan program:**
-   ```bash
-   java Main
-   ```
-
-4. **Navigasi menu:**
-   - Pilih menu dengan input angka (1-4, 0 untuk keluar)
-   - Ikuti instruksi di layar
-
----
-
 ##  Contoh Penggunaan
 
 ### **1. Tambah Barang Baru**
