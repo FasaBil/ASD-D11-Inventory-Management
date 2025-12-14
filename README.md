@@ -194,21 +194,16 @@ for (int i = 0; i < n - 1; i++) {
 
 **Perbedaan Bubble Sort dengan Algoritma Sorting Lain:**
 
-| Aspek | Bubble Sort | Selection Sort | Insertion Sort |
-|-------|-------------|----------------|----------------|
-| **Perbandingan** | Adjacent elements (j, j+1) | Cari index minimum di seluruh unsorted part | Bandingkan dengan sorted part |
-| **Operasi Utama** | **SWAP adjacent** setiap kali tidak urut | SWAP sekali per pass | **SHIFT** elemen, lalu INSERT |
-| **Loop Dalam** | `j < n - i - 1` (kurangi dari belakang) | `j = i + 1` (mulai dari i+1) | `while (j >= 0)` (loop mundur) |
-| **Jumlah Swap** | **Banyak** (setiap elemen tidak urut) | Sedikit (n-1 kali saja) | Tidak ada swap (pakai shift) |
-| **Karakteristik** | Elemen besar "menggelembung" ke akhir | Pilih minimum, taruh di awal | Insert elemen ke posisi tepat di sorted part |
-| **Variable Tambahan** | Hanya `temp` untuk swap | `minIndex` untuk track minimum | `key` untuk simpan elemen yang diinsert |
-| **Best Case** | O(n) jika sudah terurut (dengan optimasi) | O(n²) tetap | O(n) jika sudah terurut |
+| Aspek | Bubble Sort | Selection Sort |
+|-------|-------------|----------------|
+| **Perbandingan** | Adjacent elements (j, j+1) | Cari index minimum di seluruh unsorted part | 
+| **Operasi Utama** | **SWAP adjacent** setiap kali tidak urut | SWAP sekali per pass | 
+| **Loop Dalam** | `j < n - i - 1` (kurangi dari belakang) | `j = i + 1` (mulai dari i+1) | 
+| **Jumlah Swap** | **Banyak** (setiap elemen tidak urut) | Sedikit (n-1 kali saja) | 
+| **Karakteristik** | Elemen besar "menggelembung" ke akhir | Pilih minimum, taruh di awal |
+| **Variable Tambahan** | Hanya `temp` untuk swap | `minIndex` untuk track minimum |
+| **Best Case** | O(n) jika sudah terurut (dengan optimasi) | O(n²) tetap |
 
-**Ciri Khas Bubble Sort yang Membedakan:**
-1. **Compare adjacent elements** - Selalu membandingkan elemen bersebelahan (j dengan j+1)
-2. **Multiple swaps** - Melakukan swap berkali-kali dalam satu pass
-3. **Bubble up pattern** - Elemen terbesar "naik" ke posisi akhir setiap iterasi
-4. **Loop reduction** - Loop dalam berkurang (`n - i - 1`) karena elemen terbesar sudah di akhir
 
 **Menunjang Fitur:** Sorting barang berdasarkan berbagai kriteria (nama A-Z, stok descending, ID) untuk memudahkan analisis dan pelaporan.
 
