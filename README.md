@@ -377,9 +377,36 @@ for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
 ##  Format Data (inventory_data.txt)
 
 ```
-ID;Nama;Kategori;Fragile;ExpDate;Lokasi;Stok;
-SB001;Spring Water;Finished Goods;true;2025-12-31;F-01;100;5000.0
-MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
+MK06;Susu Bubuk 400g;Makanan;true;2026-05-20;R-A6;60
+MK07;Tepung Terigu 1kg;Makanan;false;-;R-A7;80
+MK08;Sarden Kaleng;Makanan;true;2027-02-01;R-A8;110
+MK09;Kopi Sachet;Makanan;false;-;R-A9;250
+MK02;Gula Pasir 1kg;Makanan;false;-;R-A2;90
+MK03;Minyak Goreng 1L;Makanan;false;-;R-A3;150
+MK04;Mie Instan Goreng;Makanan;true;2026-01-10;R-A4;300
+MK05;Telur Ayam;Makanan;true;2025-12-28;R-A5;200
+MK10;Teh Celup 25pcs;Makanan;false;-;R-A10;140
+MK11;Biskuit Kaleng;Makanan;true;2026-04-11;R-B1;70
+NM21;Sabun Mandi Batang;Non-Makanan;false;-;N-C1;200
+MK12;Kecap Manis 600ml;Makanan;false;-;R-B2;95
+NM22;Shampoo Sachet;Non-Makanan;false;-;N-C2;300
+MK17;Kentang 1kg;Makanan;true;2025-12-25;R-B7;60
+NM27;Plastik Kresek;Non-Makanan;false;-;N-C7;500
+MK18;Bawang Merah 1kg;Makanan;true;2025-12-27;R-B8;75
+NM28;Gas Elpiji 3kg;Non-Makanan;false;-;N-C8;40
+MK19;Bawang Putih 1kg;Makanan;true;2026-01-02;R-B9;80
+NM29;Obat Nyamuk Bakar;Non-Makanan;false;-;N-C9;120
+MK13;Saus Sambal 135ml;Makanan;false;-;R-B3;100
+NM23;Pasta Gigi 100g;Non-Makanan;false;-;N-C3;150
+MK14;Susu UHT 1L;Makanan;true;2026-02-18;R-B4;50
+NM24;Detergen Bubuk 1kg;Non-Makanan;false;-;N-C4;100
+MK15;Air Mineral 600ml;Makanan;false;-;R-B5;300
+NM25;Pewangi Pakaian;Non-Makanan;false;-;N-C5;80
+MK16;Roti Tawar;Makanan;true;2025-12-22;R-B6;40
+NM26;Tisu Wajah;Non-Makanan;false;-;N-C6;90
+MK20;Ikan Asin 250g;Makanan;true;2026-03-15;R-B10;40
+NM30;Sikat Gigi;Non-Makanan;false;-;N-C10;150
+MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ```
 
 **Field:**
@@ -446,14 +473,5 @@ Berikut adalah daftar repositori proyek akhir dari kelompok lain di kelas D:
 
 ---
 
-##  Lisensi
-
-MIT License - Lihat file `LICENSE` untuk detail lengkap.
-
----
-
-##  Kontak
-
-Untuk pertanyaan atau diskusi lebih lanjut, silakan hubungi salah satu anggota kelompok D-11 melalui email institusi ITS.
 
 
