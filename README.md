@@ -1,4 +1,4 @@
-# Warehouse Management System
+<img width="420" height="370" alt="image" src="https://github.com/user-attachments/assets/b4874d7f-6b6a-4b51-ba0b-48a1810fe933" /># Warehouse Management System
 ## Sistem Manajemen Inventaris Gudang
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
@@ -12,6 +12,8 @@
 | Aspek | Detail |
 |-------|--------|
 | **Mata Kuliah** | Algoritma dan Struktur Data (ASD) |
+| **Topik** | Warehouse Management System |
+| **Dosen Pengampu** | Renny Pradina K. |
 | **Kelas** | D |
 | **Kelompok** | D-11 |
 | **Semester** | Gasal 2025/2026 |
@@ -350,34 +352,6 @@ Urutkan berdasarkan (ID / NAME / STOCK): NAME
 
 ---
 
-##  Perbaikan dari Versi Sebelumnya
-
-### ** Masalah Sebelumnya:**
-```java
-// Hanya "memanggil" library, bukan implementasi algoritma
-return stream().filter(...).collect(Collectors.toList());  // Linear Search
-filtered.sort(comparator);  // Sorting (Timsort)
-```
-
-### ** Solusi Sekarang:**
-```java
-// Implementasi manual algoritma dengan kompleksitas terlihat jelas
-for (InventoryItem item : items) {  // Linear Search O(n)
-    if (condition) result.add(item);
-}
-
-for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
-    for (int j = 0; j < n-i-1; j++) {
-        if (items[j] > items[j+1]) swap();
-    }
-}
-```
-
-**Lihat:** `PRESENTASI_RINGKASAN.md` untuk detail perbaikan
-
----
-
-
 ##  Testing
 
 ### **Skenario Test:**
@@ -455,6 +429,27 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ![Bubble Sort](https://via.placeholder.com/600x300?text=Bubble+Sort+Output)
 
 ---
+## Daftar Kelompok Lain
+
+| No | Nama | GitHub |
+|----|------|--------|
+| 1  | D-1  |  |
+| 2  | D-2  |  |
+| 3  | D-3  |  |
+| 4  | D-4  |  |
+| 5  | D-5  |  |
+| 6  | D-6  |  |
+| 7  | D-7  |  |
+| 8  | D-8  |  |
+| 9  | D-9  |  |
+| 10 | D-10 |  |
+| 11 | D-11 |  |
+| 12 | D-12 |  |
+| 13 | D-13 |  |
+| 14 | D-14 |  |
+---
+
+---
 
 ##  Update Log
 
@@ -462,8 +457,6 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 **Deskripsi Update:** -  
 **File yang Diubah:** -  
 **Link Video (jika ada perubahan UI):** -
-
----
 
 ---
 
