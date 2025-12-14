@@ -1,4 +1,3 @@
-# Warehouse Management System
 ## Sistem Manajemen Inventaris Gudang
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
@@ -12,6 +11,8 @@
 | Aspek | Detail |
 |-------|--------|
 | **Mata Kuliah** | Algoritma dan Struktur Data (ASD) |
+| **Topik** | Warehouse Management System |
+| **Dosen Pengampu** | Renny Pradina K. |
 | **Kelas** | D |
 | **Kelompok** | D-11 |
 | **Semester** | Gasal 2025/2026 |
@@ -337,19 +338,23 @@ ASD-D5-Inventory-Management/
 ### **1. Tambah Barang Baru**
 ```
 --- Tambah Barang Baru ---
-ID Barang (Ex: SB1, BB2): SB001
+ID Barang (Ex: MK01, NM01): MK01
 Nama Barang: Spring Water
-Kategori Barang (Material / Finished Goods): Finished Goods
+Kategori Barang:
+  Makanan: Beras, Gula, Minyak, Telur, Susu UHT, Susu Bubuk, Mie Instan, Roti,
+           Kecap, Saus, Bumbu, Teh, Kopi, Biskuit, Kerupuk, Sarden, dll.
+  Non-Makanan: Perlengkapan Rumah, Air Minum / Kemasan, Kebersihan & Kesehatan
+Masukkan kategori: Non-Makanan
 Fragile? (true/false): true
 Expiration Date (YYYY-MM-DD / Kosong): 2025-12-31
-Lokasi diatur otomatis ke: F-01
+Lokasi diatur otomatis ke: R-01
 Stok Tersedia: 100
 
 [Tree Traversal DFS] Memulai pencarian kategori untuk: Spring Water
   [DFS] Mengunjungi node: All Categories
   [DFS] Mencari di left subtree dari: All Categories
-  [DFS] Mengunjungi node: Finished Goods
-  [DFS] ✓ Match! Item 'Spring Water' ditambahkan ke node: Finished Goods
+  [DFS] Mengunjungi node: Non-Makanan
+  [DFS] ✓ Match! Item 'Spring Water' ditambahkan ke node: Non-Makanan
 
 Barang berhasil ditambahkan!
 ```
@@ -380,10 +385,17 @@ Urutkan berdasarkan (ID / NAME / STOCK): NAME
 
 ### **4. Check Expired Items (Priority Queue)**
 ```
-[Priority Queue] Mengecek item expired...
-  [Heap Insert] Item expired dipindahkan: Milk | Exp: 2025-12-10 | Heap size: 1
-[Priority Queue] Total item dipindahkan: 1
-[Priority Queue] Item dengan expiration paling awal: Milk
+[Bubble Sort] Total swap: 4 operasi
+
+--- NOTIFIKASI: BARANG AKAN EXPIRED DALAM 14 HARI ---
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
+| ID       | Nama                 | Kategori        | Fragile  | Exp. Date       | Lokasi     | Stok  |
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
+| MK18     | Bawang Merah 1kg     | Makanan         | Yes      | 2025-12-27      | R-B8       | 75    |
+| MK17     | Kentang 1kg          | Makanan         | Yes      | 2025-12-25      | R-B7       | 60    |
+| MK16     | Roti Tawar           | Makanan         | Yes      | 2025-12-22      | R-B6       | 40    |
+| MK05     | Telur Ayam           | Makanan         | Yes      | 2025-12-28      | R-A5       | 200   |
++----------+----------------------+-----------------+----------+-----------------+------------+-------+
 ```
 
 ---
@@ -425,34 +437,6 @@ Urutkan berdasarkan (ID / NAME / STOCK): NAME
 - Partial matching untuk string
 
 ---
-
-##  Perbaikan dari Versi Sebelumnya
-
-### ** Masalah Sebelumnya:**
-```java
-// Hanya "memanggil" library, bukan implementasi algoritma
-return stream().filter(...).collect(Collectors.toList());  // Linear Search
-filtered.sort(comparator);  // Sorting (Timsort)
-```
-
-### ** Solusi Sekarang:**
-```java
-// Implementasi manual algoritma dengan kompleksitas terlihat jelas
-for (InventoryItem item : items) {  // Linear Search O(n)
-    if (condition) result.add(item);
-}
-
-for (int i = 0; i < n-1; i++) {  // Bubble Sort O(n²)
-    for (int j = 0; j < n-i-1; j++) {
-        if (items[j] > items[j+1]) swap();
-    }
-}
-```
-
-**Lihat:** `PRESENTASI_RINGKASAN.md` untuk detail perbaikan
-
----
-
 
 ##  Testing
 
@@ -519,28 +503,41 @@ MK01;Beras Premium 5kg;Makanan;false;-;R-A1;120
 ##  Screenshot Program
 
 ### Menu Utama
-![Menu Utama](https://via.placeholder.com/600x300?text=Menu+Utama+Warehouse+Management)
+<img width="543" height="308" alt="image" src="https://github.com/user-attachments/assets/89132b98-0e93-4979-ad73-2b8ceeb80a26" />
 
 ### Penambahan Barang dengan Tree Traversal
-![Tree Traversal](https://via.placeholder.com/600x300?text=DFS+Tree+Traversal)
+<img width="826" height="406" alt="image" src="https://github.com/user-attachments/assets/3f25195a-e70e-4dda-aca9-53543de98c03" />
+<img width="664" height="525" alt="image" src="https://github.com/user-attachments/assets/862d8430-a8f5-4675-97a4-2f9a58a83fda" />
 
 ### Pencarian dengan Linear Search
-![Linear Search](https://via.placeholder.com/600x300?text=Linear+Search+Result)
+<img width="1046" height="501" alt="image" src="https://github.com/user-attachments/assets/c45a32b3-16e1-4f02-92fd-6fc836c93406" />
 
 ### Sorting dengan Bubble Sort
-![Bubble Sort](https://via.placeholder.com/600x300?text=Bubble+Sort+Output)
+<img width="1048" height="527" alt="image" src="https://github.com/user-attachments/assets/dc810903-b1fb-4e7c-b1d2-cb7dd2c09559" />
+
+## Check Expired Items
+<img width="1037" height="262" alt="image" src="https://github.com/user-attachments/assets/4ba92d7b-ad71-45aa-8d48-1ecb5d95261f" />
+
 
 ---
+## Daftar Kelompok Lain
 
-##  Update Log
-
-### Update 1 - [Tanggal akan diisi saat ada update]
-**Deskripsi Update:** -  
-**File yang Diubah:** -  
-**Link Video (jika ada perubahan UI):** -
-
----
-
+| No | Nama | GitHub |
+|----|------|--------|
+| 1  | D-1  | https://github.com/NashiwaInsan/asdfinalproject |
+| 2  | D-2  | https://github.com/dedyirama-id/kael-recommendation-system |
+| 3  | D-3  | https://github.com/Sudukk/FP_ASD_Traffic_Light_Simulation_FINAL |
+| 4  | D-4  | https://github.com/dreadf/hotelseek |
+| 5  | D-5  |  |
+| 6  | D-6  | https://github.com/anggraitapr/ASDFPTODOLIST |
+| 7  | D-7  | https://github.com/WilliamHanantha/FP-ASD |
+| 8  | D-8  | https://github.com/tyr3x74/GymPlan |
+| 9  | D-9  | https://github.com/mariaelvina/FinalProjectD9 |
+| 10 | D-10 | https://github.com/Aida41104/FPASD |
+| 11 | D-11 | https://github.com/FasaBil/ASD-D11-Inventory-Management |
+| 12 | D-12 | https://github.com/Dziky05/FP-ASD-KEL-13 |
+| 13 | D-13 | https://github.com/FashaAsshofa/Final-Project-ASD-D-Kelompok-13 |
+| 14 | D-14 | https://github.com/neutralcheeze/final-project-asd.git |
 ---
 
 
