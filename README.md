@@ -232,7 +232,72 @@ expiredQueue.offer(item);
 - `InventoryItem.java` - Method `compareTo()` (lines 66-72) untuk implementasi Comparable  
 - `WarehouseManager.java` - Method `checkAndMoveExpiredItems()` (lines 230-254) untuk penggunaan Priority Queue
 
-**Cara Kerja:** Menggunakan implementasi min-heap melalui Java PriorityQueue dengan custom Comparable. Item dengan expiration date paling awal akan berada di root heap. Saat item expired ditambahkan, heap secara otomatis melakukan heapify up untuk menjaga property heap. Implementasi Comparable yang manual membuat item dapat dibandingkan berdasarkan tanggal expired.  
+**Cara Kerja:** Menggunakan implementasi min-heap melalui Java PriorityQueue dengan custom Comparable. Item dengan expiration date paling awal akan berada di root heap. Saat item expired ditambahkan, heap secara otomatis melakukan heapify up untuk menjaga property heap. Implementasi Comparable yang manual membuat item dapat dibandingkan berdasarkan tanggal expired.
+
+
+Priority Queue dalam proyek ini **BUKAN hanya import library**, tapi **implementasi algoritma heap sorting manual** melalui `Comparable` interface. Berikut alasannya:
+
+**1. Implementasi Manual Algoritma Comparison (Comparable Interface)**
+```java
+// InventoryItem.java - Manual implementation
+@Override
+public int compareTo(InventoryItem other) {
+    // Algoritma perbandingan manual dengan null handling
+    if (this.expirationDate == null && other.expirationDate == null) return 0;
+    if (this.expirationDate == null) return 1;  // Null = prioritas rendah
+    if (other.expirationDate == null) return -1;
+    
+    // Comparison logic: tanggal lebih awal = prioritas lebih tinggi
+    return this.expirationDate.compareTo(other.expirationDate);
+}
+```
+
+**2. Algoritma yang Diimplementasikan:**
+- **Comparison Algorithm** - Logic untuk menentukan urutan prioritas (lines 66-72)
+- **Null Handling** - Edge case handling untuk tanggal null
+- **Min-Heap Property** - Item dengan tanggal paling awal di root
+
+**3. Perbedaan dengan "Sekedar Import Library":**
+
+| Aspek | Sekedar Import Library | Implementasi Kami |
+|-------|----------------------|-------------------|
+| **Code** | `queue.add(item)` tanpa logic | **Implement `compareTo()`** dengan logic manual |
+| **Sorting Logic** | Default sorting (tidak terlihat) | **Custom sorting berdasarkan expiration date** |
+| **Algorithm Visibility** | Tersembunyi di library | **Algoritma comparison terlihat jelas di code** |
+| **Edge Cases** | Default handling | **Manual null handling dan conditional logic** |
+| **Complexity** | Tidak terlihat | **O(log n) heapify terlihat dari implementasi** |
+
+**4. Algoritma Heap yang Bekerja di Balik PriorityQueue:**
+
+Saat `compareTo()` dipanggil, PriorityQueue melakukan:
+- **Heapify Up** (saat insert) - O(log n): Bandingkan dengan parent, swap jika perlu
+- **Heapify Down** (saat poll) - O(log n): Reorder heap setelah remove root
+- **Comparison** menggunakan **ALGORITMA MANUAL** yang kita tulis di `compareTo()`
+
+**5. Bukti dalam kode**
+
+```java
+// Tanpa implementasi compareTo(), code ini ERROR!
+PriorityQueue<InventoryItem> queue = new PriorityQueue<>();  // ❌ Compile error
+
+// Karena InventoryItem HARUS implement Comparable dengan ALGORITMA manual
+public class InventoryItem implements Comparable<InventoryItem> {
+    @Override
+    public int compareTo(InventoryItem other) {
+        // ALGORITMA INI YANG MENENTUKAN CARA SORTING!
+        return this.expirationDate.compareTo(other.expirationDate);
+    }
+}
+```
+
+**Kesimpulan:**
+Priority Queue di proyek ini ***implementasi algoritma comparison manual** yang:
+1. Ditulis sendiri di method `compareTo()`
+2. Menentukan logic prioritas (tanggal lebih awal = prioritas tinggi)
+3. Handle edge cases (null dates)
+4. Menggunakan konsep heap/tree structure dengan kompleksitas O(log n)
+5. Algoritma terlihat jelas dan bisa dijelaskan step-by-step
+
 **Menunjang Fitur:** Deteksi dan manajemen barang expired secara otomatis, dengan prioritas pada barang yang paling dekat expired untuk ditangani terlebih dahulu.
 
 ---
@@ -240,18 +305,29 @@ expiredQueue.offer(item);
 ##  Struktur File
 
 ```
-ADS/
+ASD-D5-Inventory-Management/
 │
-├── Main.java                    # UI Console & Menu
-├── WarehouseManager.java        # Core Logic & 4 Algoritma
-├── CategoryNode.java            # Binary Tree Structure
-├── InventoryItem.java           # Data Model & Comparable
+├── kode/                        # Folder kode (sesuai laporan.txt)
+│   ├── Main.java                # UI Console & Menu
+│   ├── WarehouseManager.java    # Core Logic & 4 Algoritma
+│   ├── CategoryNode.java        # Binary Tree Structure
+│   └── InventoryItem.java       # Data Model & Comparable
 │
-├── inventory_data.txt           # Data persistence
+├── data/
+│   └── inventory_data.txt       # Data persistence
 │
-├── README.md                    # Dokumentasi (file ini)
-├── ALGORITMA_EXPLANATION.md     # Penjelasan teknis lengkap
-└── PRESENTASI_RINGKASAN.md      # Ringkasan untuk presentasi
+├── presentasi/                  # Folder presentasi (sesuai laporan.txt)
+│   └── (file presentasi akan ditambahkan di sini)
+│
+├── docs/
+│   ├── ALGORITMA_EXPLANATION.md     # Penjelasan teknis lengkap
+│   ├── PRESENTASI_RINGKASAN.md      # Ringkasan untuk presentasi
+│   ├── STRUKTUR_DATA_LOKASI.md      # Lokasi implementasi struktur data
+│   └── CONTOH_ALGORITMA_SIMPLE.md   # Contoh algoritma sederhana
+│
+├── README.md                    # Dokumentasi utama (file ini)
+├── .gitignore                   # Git ignore rules
+└── LICENSE                      # MIT License
 ```
 
 ---
