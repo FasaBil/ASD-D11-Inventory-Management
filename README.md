@@ -194,7 +194,27 @@ for (int i = 0; i < n - 1; i++) {
 }
 ```
 **File/Class Implementasi:** `WarehouseManager.java` - Methods `bubbleSortByName()` (lines 367-383), `bubbleSortByStockOnHand()` (lines 391-407), `bubbleSortByItemId()` (lines 415-431)  
-**Cara Kerja:** Algoritma sorting sederhana yang membandingkan dua elemen bersebelahan dan menukar posisinya jika urutannya salah. Proses ini diulang hingga seluruh list terurut. Menggunakan nested loop dimana loop luar menentukan pass dan loop dalam melakukan perbandingan dan swap.  
+
+**Cara Kerja:** Algoritma sorting sederhana yang membandingkan dua elemen bersebelahan dan menukar posisinya jika urutannya salah. Proses ini diulang hingga seluruh list terurut. Menggunakan nested loop dimana loop luar menentukan pass dan loop dalam melakukan perbandingan dan swap.
+
+**Perbedaan Bubble Sort dengan Algoritma Sorting Lain:**
+
+| Aspek | Bubble Sort | Selection Sort | Insertion Sort |
+|-------|-------------|----------------|----------------|
+| **Perbandingan** | Adjacent elements (j, j+1) | Cari index minimum di seluruh unsorted part | Bandingkan dengan sorted part |
+| **Operasi Utama** | **SWAP adjacent** setiap kali tidak urut | SWAP sekali per pass | **SHIFT** elemen, lalu INSERT |
+| **Loop Dalam** | `j < n - i - 1` (kurangi dari belakang) | `j = i + 1` (mulai dari i+1) | `while (j >= 0)` (loop mundur) |
+| **Jumlah Swap** | **Banyak** (setiap elemen tidak urut) | Sedikit (n-1 kali saja) | Tidak ada swap (pakai shift) |
+| **Karakteristik** | Elemen besar "menggelembung" ke akhir | Pilih minimum, taruh di awal | Insert elemen ke posisi tepat di sorted part |
+| **Variable Tambahan** | Hanya `temp` untuk swap | `minIndex` untuk track minimum | `key` untuk simpan elemen yang diinsert |
+| **Best Case** | O(n) jika sudah terurut (dengan optimasi) | O(n²) tetap | O(n) jika sudah terurut |
+
+**Ciri Khas Bubble Sort yang Membedakan:**
+1. **Compare adjacent elements** - Selalu membandingkan elemen bersebelahan (j dengan j+1)
+2. **Multiple swaps** - Melakukan swap berkali-kali dalam satu pass
+3. **Bubble up pattern** - Elemen terbesar "naik" ke posisi akhir setiap iterasi
+4. **Loop reduction** - Loop dalam berkurang (`n - i - 1`) karena elemen terbesar sudah di akhir
+
 **Menunjang Fitur:** Sorting barang berdasarkan berbagai kriteria (nama A-Z, stok descending, ID) untuk memudahkan analisis dan pelaporan.
 
 ### 4. **Priority Queue (Heap)** - O(log n)
