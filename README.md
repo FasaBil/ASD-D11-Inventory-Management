@@ -313,13 +313,6 @@ ASD-D5-Inventory-Management/
 │
 ├── presentasi/                  # Folder presentasi 
 │   └── Final Project ASD Kelompok 11.pdf
-│
-├── docs/
-│   ├── ALGORITMA_EXPLANATION.md     # Penjelasan teknis lengkap
-│   ├── PRESENTASI_RINGKASAN.md      # Ringkasan untuk presentasi
-│   ├── STRUKTUR_DATA_LOKASI.md      # Lokasi implementasi struktur data
-│   └── CONTOH_ALGORITMA_SIMPLE.md   # Contoh algoritma sederhana
-│
 ├── README.md                    # Dokumentasi utama (file ini)
 ├── .gitignore                   # Git ignore rules
 ```
