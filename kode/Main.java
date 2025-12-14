@@ -133,7 +133,7 @@ public class Main {
     private static void handleAddItemMenu() {
         System.out.println("\n--- Tambah Barang Baru ---");
 
-        System.out.print("ID Barang (Ex: SB1, BB2): ");
+        System.out.print("ID Barang (Ex: MK01, NM01): ");
         String itemId = scanner.nextLine().toUpperCase();
 
         System.out.print("Nama Barang: ");
