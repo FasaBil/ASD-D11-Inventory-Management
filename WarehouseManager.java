@@ -4,36 +4,6 @@ import java.util.*;
 
 /**
  * Manager untuk mengelola inventaris gudang
- * 
- * ===================================================================
- * Implementasi 4 ALGORITMA UTAMA dengan KOMPLEKSITAS SEBENARNYA:
- * ===================================================================
- * 
- * 1. TREE TRAVERSAL (Recursive DFS - Depth First Search)
- *    - Menggunakan rekursi untuk traverse binary tree kategori
- *    - Pre-order traversal: Root -> Left -> Right
- *    - Kompleksitas: O(h) dimana h = tinggi tree, worst case O(n)
- *    - Implementasi: addItemToCategoryTreeRecursive(), getAllItemsRecursive()
- * 
- * 2. LINEAR SEARCH (Sequential Search dengan Partial Match)
- *    - Iterasi manual satu per satu menggunakan loop
- *    - Kompleksitas: O(n) - harus cek semua elemen
- *    - TIDAK menggunakan Stream API atau filter bawaan
- *    - Implementasi: searchItemByName()
- * 
- * 3. SORTING (Bubble Sort Manual)
- *    - Implementasi manual nested loop untuk compare dan swap
- *    - Kompleksitas: O(n²) - worst case quadratic time
- *    - TIDAK menggunakan Collections.sort() atau Comparator
- *    - Implementasi: bubbleSortByName(), bubbleSortByStock(), bubbleSortById()
- * 
- * 4. PRIORITY QUEUE (Min-Heap untuk Expired Items)
- *    - Binary heap structure untuk maintain sorted order
- *    - Kompleksitas: O(log n) untuk insert (heapify up)
- *    - Auto-sort berdasarkan expiration date (earliest first)
- *    - Implementasi: checkAndMoveExpiredItems() + PriorityQueue
- * 
- * ===================================================================
  */
 
 public class WarehouseManager {

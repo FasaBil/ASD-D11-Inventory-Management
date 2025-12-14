@@ -39,6 +39,46 @@ Warehouse Management System adalah aplikasi console-based untuk mengelola invent
 
 ---
 
+##  Latar Belakang & Rumusan Masalah
+
+Pengelolaan stok di toko sembako menengah masih banyak dilakukan secara manual, tanpa standar penataan yang jelas. Dalam kondisi nyata, ruang gudang sering memiliki kapasitas terbatas, sehingga pemilik maupun karyawan harus memaksimalkan area penyimpanan yang ada. Situasi ini membuat barang sering ditumpuk atau digabungkan tanpa memperhatikan kategori atau karakteristiknya.
+
+### Permasalahan Umum
+
+**1. Pencarian barang tidak efisien**  
+Tanpa sistem kategori yang terstruktur, karyawan membutuhkan waktu lama untuk menemukan barang tertentu. Ada barang yang terselip, tertumpuk, atau dipindahkan ke tempat lain.
+
+**2. Barang kadang dianggap habis padahal masih tersisa**  
+Karena penataan gudang tidak rapi, beberapa barang tidak terlihat atau berada di belakang tumpukan lainnya. Karyawan mengira stok sudah habis, padahal sebenarnya masih tersimpan di gudang.
+
+**3. Risiko barang expired meningkat**  
+Barang makanan tetap memiliki risiko kedaluwarsa karena kurangnya pemantauan dan pencatatan tanggal expired. Owner sering tidak menyadari barang mana yang paling dekat masa kadaluarsanya.
+
+**4. Kerusakan barang yang bersifat fragile**  
+Barang yang mudah pecah seperti botol kaca atau barang kemasan tipis sering rusak karena tidak ada zona khusus atau aturan penumpukan. Ketika gudang penuh, karyawan akan menumpuk barang sembarangan demi menghemat tempat. Selain itu ada resiko kontaminasi bau akibat pencampuran produk tertentu dengan produk sabun, detergen, pembersih.
+
+**5. Keterbatasan kapasitas gudang (Storage Limitation)**  
+Karena ruang gudang tidak luas, setiap kesalahan penataan akan memperparah kondisi. Barang yang datang dalam jumlah besar sering dimasukkan ke ruang kosong terdekat tanpa mempertimbangkan kategorinya.
+
+**6. Ketergantungan pada karyawan (Human Error)**  
+Pemilik toko sering tidak mengetahui detail lokasi barang di dalam gudang. Pengetahuan tentang penempatan barang biasanya hanya ada pada karyawan yang mengatur gudang.
+
+---
+
+##  Solusi yang Ditawarkan
+
+Dengan adanya berbagai macam masalah tersebut, dibutuhkan sebuah sistem sederhana untuk membantu mengorganisir gudang secara rapi dan mudah untuk dipahami baik oleh owner maupun karyawan dengan fitur sebagai berikut:
+
+- Pengelompokan kategori barang secara hierarkis menggunakan Binary Tree
+- Pemisahan zona makanan & non-makanan dengan sub-kategori yang terstruktur
+- Pendeteksian barang yang hampir expired menggunakan Priority Queue
+- Akses cepat stok barang dengan HashMap (O(1) lookup)
+- Penyimpanan data yang fleksibel dengan file persistence
+- Pencarian barang dengan Linear Search untuk partial matching
+- Sorting barang berdasarkan berbagai kriteria (nama, stok, ID)
+
+---
+
 ##  Fitur Utama
 
 ###  **Manajemen Inventaris**
@@ -125,6 +165,9 @@ private boolean addItemToCategoryTreeRecursive(CategoryNode node, InventoryItem 
            addItemToCategoryTreeRecursive(node.getRightChild(), item);
 }
 ```
+**File/Class Implementasi:** `WarehouseManager.java` - Method `addItemToCategoryTreeRecursive()` (lines 163-186)  
+**Cara Kerja:** Algoritma ini melakukan traversal pre-order pada Binary Tree untuk mencari kategori yang sesuai dengan item. Dimulai dari root node, algoritma mengunjungi node saat ini, kemudian rekursif ke left child, dan akhirnya ke right child. Jika kategori cocok, item ditambahkan ke storage list node tersebut.  
+**Menunjang Fitur:** Penambahan barang otomatis ke kategori yang tepat dalam struktur hierarki tree.
 
 ### 2. **Linear Search** - O(n)
 ```java
@@ -135,6 +178,9 @@ for (InventoryItem item : quickAccessMap.values()) {
     }
 }
 ```
+**File/Class Implementasi:** `WarehouseManager.java` - Method `searchItemByName()` (lines 279-302)  
+**Cara Kerja:** Algoritma ini melakukan pencarian sekuensial melalui semua item dalam HashMap. Setiap item dibandingkan satu per satu dengan keyword pencarian (case-insensitive, partial matching). Jika nama item mengandung keyword, item tersebut ditambahkan ke hasil pencarian.  
+**Menunjang Fitur:** Pencarian barang berdasarkan nama dengan partial matching, memungkinkan user menemukan barang tanpa harus mengetik nama lengkap.
 
 ### 3. **Bubble Sort** - O(n²)
 ```java
@@ -147,6 +193,9 @@ for (int i = 0; i < n - 1; i++) {
     }
 }
 ```
+**File/Class Implementasi:** `WarehouseManager.java` - Methods `bubbleSortByName()` (lines 367-383), `bubbleSortByStockOnHand()` (lines 391-407), `bubbleSortByItemId()` (lines 415-431)  
+**Cara Kerja:** Algoritma sorting sederhana yang membandingkan dua elemen bersebelahan dan menukar posisinya jika urutannya salah. Proses ini diulang hingga seluruh list terurut. Menggunakan nested loop dimana loop luar menentukan pass dan loop dalam melakukan perbandingan dan swap.  
+**Menunjang Fitur:** Sorting barang berdasarkan berbagai kriteria (nama A-Z, stok descending, ID) untuk memudahkan analisis dan pelaporan.
 
 ### 4. **Priority Queue (Heap)** - O(log n)
 ```java
@@ -159,6 +208,12 @@ public int compareTo(InventoryItem other) {
 // Insert: O(log n) - heapify up
 expiredQueue.offer(item);
 ```
+**File/Class Implementasi:**  
+- `InventoryItem.java` - Method `compareTo()` (lines 66-72) untuk implementasi Comparable  
+- `WarehouseManager.java` - Method `checkAndMoveExpiredItems()` (lines 230-254) untuk penggunaan Priority Queue
+
+**Cara Kerja:** Menggunakan implementasi min-heap melalui Java PriorityQueue dengan custom Comparable. Item dengan expiration date paling awal akan berada di root heap. Saat item expired ditambahkan, heap secara otomatis melakukan heapify up untuk menjaga property heap. Implementasi Comparable yang manual membuat item dapat dibandingkan berdasarkan tanggal expired.  
+**Menunjang Fitur:** Deteksi dan manajemen barang expired secara otomatis, dengan prioritas pada barang yang paling dekat expired untuk ditangani terlebih dahulu.
 
 ---
 
@@ -172,7 +227,7 @@ ADS/
 ├── CategoryNode.java            # Binary Tree Structure
 ├── InventoryItem.java           # Data Model & Comparable
 │
-├── inventory_data.txt           # Data persistence (auto-generated)
+├── inventory_data.txt           # Data persistence
 │
 ├── README.md                    # Dokumentasi (file ini)
 ├── ALGORITMA_EXPLANATION.md     # Penjelasan teknis lengkap
@@ -368,6 +423,67 @@ MT001;Steel Plate;Material;false;-;M-A1;50;15000.0
 
 ---
 
+##  Screenshot Program
 
+### Menu Utama
+![Menu Utama](https://via.placeholder.com/600x300?text=Menu+Utama+Warehouse+Management)
+
+### Penambahan Barang dengan Tree Traversal
+![Tree Traversal](https://via.placeholder.com/600x300?text=DFS+Tree+Traversal)
+
+### Pencarian dengan Linear Search
+![Linear Search](https://via.placeholder.com/600x300?text=Linear+Search+Result)
+
+### Sorting dengan Bubble Sort
+![Bubble Sort](https://via.placeholder.com/600x300?text=Bubble+Sort+Output)
+
+---
+
+##  Proyek Kelompok Lain
+
+Berikut adalah daftar repositori proyek akhir dari kelompok lain di kelas D:
+
+| Kelompok | Judul Proyek | Link Repository |
+|----------|--------------|-----------------|
+| D-1 | TBD | TBD |
+| D-2 | TBD | TBD |
+| D-3 | TBD | TBD |
+| D-4 | TBD | TBD |
+| D-5 | TBD | TBD |
+| D-6 | TBD | TBD |
+| D-7 | TBD | TBD |
+| D-8 | TBD | TBD |
+| D-9 | TBD | TBD |
+| D-10 | TBD | TBD |
+| D-12 | TBD | TBD |
+
+---
+
+##  Update Log
+
+### Update 1 - [Tanggal akan diisi saat ada update]
+**Deskripsi Update:** -  
+**File yang Diubah:** -  
+**Link Video (jika ada perubahan UI):** -
+
+---
+
+##  Catatan Penting
+
+- Batas waktu penilaian: **Minggu, 14 Desember 2025, pukul 16.00**
+- Update program diperbolehkan hingga waktu tersebut
+- Setiap update akan didokumentasikan dalam Update Log di atas
+
+---
+
+##  Lisensi
+
+MIT License - Lihat file `LICENSE` untuk detail lengkap.
+
+---
+
+##  Kontak
+
+Untuk pertanyaan atau diskusi lebih lanjut, silakan hubungi salah satu anggota kelompok D-11 melalui email institusi ITS.
 
 
