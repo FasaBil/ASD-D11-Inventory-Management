@@ -1,11 +1,5 @@
 ## Sistem Manajemen Inventaris Gudang
 
-[![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
-
----
-
 ##  Informasi Proyek
 
 | Aspek | Detail |
@@ -308,7 +302,7 @@ Priority Queue di proyek ini ***implementasi algoritma comparison manual** yang:
 ```
 ASD-D5-Inventory-Management/
 │
-├── kode/                        # Folder kode (sesuai laporan.txt)
+├── kode/                        # Folder kode 
 │   ├── Main.java                # UI Console & Menu
 │   ├── WarehouseManager.java    # Core Logic & 4 Algoritma
 │   ├── CategoryNode.java        # Binary Tree Structure
@@ -317,8 +311,8 @@ ASD-D5-Inventory-Management/
 ├── data/
 │   └── inventory_data.txt       # Data persistence
 │
-├── presentasi/                  # Folder presentasi (sesuai laporan.txt)
-│   └── (file presentasi akan ditambahkan di sini)
+├── presentasi/                  # Folder presentasi 
+│   └── Final Project ASD Kelompok 11.pdf
 │
 ├── docs/
 │   ├── ALGORITMA_EXPLANATION.md     # Penjelasan teknis lengkap
@@ -328,7 +322,6 @@ ASD-D5-Inventory-Management/
 │
 ├── README.md                    # Dokumentasi utama (file ini)
 ├── .gitignore                   # Git ignore rules
-└── LICENSE                      # MIT License
 ```
 
 ---
